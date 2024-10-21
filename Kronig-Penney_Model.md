@@ -140,6 +140,9 @@ The figure above shows the energy bands obtained from the Kronig-Penney model. T
 - This plot provides a fundamental understanding of the electronic structure of materials. In real-world materials, the exact shape and width of the energy bands and gaps will depend on the crystal structure and the nature of the atoms within the lattice.
 - Semiconductors, for instance, have band structures that look similar to this plot but with a moderate-sized band gap, which allows for controlled electron flow when certain energies are supplied (e.g., thermal or optical energy).
 - Conductors, on the other hand, typically have overlapping bands or very small band gaps, allowing electrons to move freely even at low energies, resulting in good electrical conductivity.
+- 
+Check out the Kronig-Penney Model with changing a, b and V in the Notebook [here](https://github.com/ph7klw76/SIF3008/blob/main/Kronig%E2%80%93Penney.ipynb).
+
 
 The Kronig-Penney model, though a simplification, helps provide these foundational insights into the behavior of electrons in periodic potentials and forms the basis for more complex models used in condensed matter physics and materials science.
 
