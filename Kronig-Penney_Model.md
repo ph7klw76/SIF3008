@@ -65,12 +65,11 @@ k_values = np.linspace(-np.pi/a, np.pi/a, 100)  # Wavevector range
 
 # Define the equation for cos(k*a) in the Kronig-Penney model
 def kronig_penney(E, k, P, a):
-    # Avoid division by zero by handling the case where alpha is very small
     alpha = np.sqrt(2 * m * E * 1.60218e-19) / hbar  # Convert eV to Joules
     
-    # When alpha is very small, handle the division gracefully
+    # Avoid division by zero
     if np.abs(alpha * a) < 1e-10:
-        term = P  # Approximate limit of sin(alpha * a) / (alpha * a) as alpha -> 0
+        term = P
     else:
         term = P * np.sin(alpha * a) / (alpha * a)
     
@@ -79,32 +78,52 @@ def kronig_penney(E, k, P, a):
     
     return lhs - rhs
 
-# Solve the Kronig-Penney model for each k and plot the results
-def plot_kronig_penney(P, a, E_min, E_max, N):
+# Solve the Kronig-Penney model and find the first bandgap
+def find_first_bandgap(P, a, E_min, E_max, N):
     energies = np.linspace(E_min, E_max, N)
-    k_values = np.linspace(-np.pi/a, np.pi/a, 1000)
-
-    plt.figure(figsize=(8, 6))
+    k_values = np.linspace(-np.pi/a, np.pi/a, 100)
+    band_edges = []
 
     for k in k_values:
-        cos_ka = []
+        allowed_energies = []
         for E in energies:
             try:
                 cos_value = np.real(kronig_penney(E, k, P, a))
-                if abs(cos_value) <= 1:  # Only plot physically meaningful values
-                    cos_ka.append(E)
+                if abs(cos_value) <= 1:  # Only physically meaningful values
+                    allowed_energies.append(E)
             except:
                 pass
-        plt.plot([k] * len(cos_ka), cos_ka, 'bo', markersize=1)  # Band edges
+        if len(allowed_energies) > 0:
+            band_edges.append(allowed_energies)
 
-    plt.title(f"Kronig-Penney Model: P={P}, a={a}m")
-    plt.xlabel("k (1/m)")
-    plt.ylabel("Energy (eV)")
-    plt.grid(True)
-    plt.show()
+    # Flatten the list of allowed energy bands
+    all_energies = np.sort(np.unique([energy for band in band_edges for energy in band]))
 
-# Plot the Kronig-Penney model for given parameters
-plot_kronig_penney(P, a, E_min, E_max, N)
+    # Identify energy bands and gaps
+    first_band_max = None
+    second_band_min = None
+    energy_diff_threshold = 0.1  # Energy difference to detect bands
+
+    # Loop through all energies and detect gaps
+    for i in range(1, len(all_energies)):
+        energy_diff = all_energies[i] - all_energies[i - 1]
+        if first_band_max is None:
+            first_band_max = all_energies[i - 1]
+        elif energy_diff > energy_diff_threshold:
+            second_band_min = all_energies[i]
+            break
+
+    # Print the first bandgap
+    if first_band_max is not None and second_band_min is not None:
+        bandgap = second_band_min - first_band_max
+        print(f"First Band Maximum Energy: {first_band_max:.4f} eV")
+        print(f"Second Band Minimum Energy: {second_band_min:.4f} eV")
+        print(f"First Bandgap: {bandgap:.4f} eV")
+    else:
+        print("No bandgap found within the energy range.")
+
+# Run the function to find the first bandgap
+find_first_bandgap(P, a, E_min, E_max, N)
 ```
 ## Handling Division by Zero
 
