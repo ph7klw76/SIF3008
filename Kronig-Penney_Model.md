@@ -82,7 +82,7 @@ def kronig_penney(E, k, P, a):
 # Solve the Kronig-Penney model for each k and plot the results
 def plot_kronig_penney(P, a, E_min, E_max, N):
     energies = np.linspace(E_min, E_max, N)
-    k_values = np.linspace(-np.pi/a, np.pi/a, 100)
+    k_values = np.linspace(-np.pi/a, np.pi/a, 1000)
 
     plt.figure(figsize=(8, 6))
 
