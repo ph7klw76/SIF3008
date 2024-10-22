@@ -206,6 +206,7 @@ The lattice constant $a$ represents the distance between the potential barriers 
 
 The plot illustrates the dependence of the bandgap on $a$ and shows that the bandgap narrows as the lattice constant increases.
 
+![image](https://github.com/user-attachments/assets/7aedc316-9f10-403c-8e99-14a139804889)
 
 Here’s the complete Python code for the Kronig-Penney model with variable P and a:
 
