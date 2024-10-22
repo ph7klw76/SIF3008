@@ -1,4 +1,4 @@
-# Understanding the Kronig-Penney Model and Its Implementation in Python
+# Understanding the Kronig-Penney Model with Python
 
 The Kronig-Penney Model is a simplified quantum mechanical model that describes the behavior of electrons in a crystal lattice, which is a repeating structure of atoms. This model helps us understand how electrons interact with a periodic potential — the potential energy an electron feels due to the regularly spaced atoms in a solid. By analyzing this behavior, we can explore the concept of energy bands and band gaps, which are crucial to understanding semiconductors, insulators, and conductors.
 
