@@ -165,3 +165,111 @@ Check out the Kronig-Penney Model with changing a, b and V in the Notebook [here
 
 The Kronig-Penney model, though a simplification, helps provide these foundational insights into the behavior of electrons in periodic potentials and forms the basis for more complex models used in condensed matter physics and materials science.
 
+
+Here’s the complete Python code for the Kronig-Penney model with variable P and a:
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.constants import hbar, electron_mass
+
+# Define constants
+m = electron_mass  # Electron mass in kg
+hbar = hbar  # Reduced Planck's constant in J·s
+E_min, E_max = 0, 50  # Energy range in eV (adjustable)
+N = 1000  # Number of energy points to evaluate
+
+# Define the equation for cos(k*a) in the Kronig-Penney model
+def kronig_penney(E, k, P, a):
+    alpha = np.sqrt(2 * m * E * 1.60218e-19) / hbar  # Convert eV to Joules
+    
+    # Avoid division by zero
+    if np.abs(alpha * a) < 1e-10:
+        term = P
+    else:
+        term = P * np.sin(alpha * a) / (alpha * a)
+    
+    lhs = np.cos(k * a)
+    rhs = term + np.cos(alpha * a)
+    
+    return lhs - rhs
+
+# Solve the Kronig-Penney model and find the first bandgap
+def find_first_bandgap(P, a, E_min, E_max, N):
+    energies = np.linspace(E_min, E_max, N)
+    k_values = np.linspace(-np.pi/a, np.pi/a, 100)
+    band_edges = []
+
+    for k in k_values:
+        allowed_energies = []
+        for E in energies:
+            try:
+                cos_value = np.real(kronig_penney(E, k, P, a))
+                if abs(cos_value) <= 1:  # Only physically meaningful values
+                    allowed_energies.append(E)
+            except:
+                pass
+        if len(allowed_energies) > 0:
+            band_edges.append(allowed_energies)
+
+    # Flatten the list of allowed energy bands
+    all_energies = np.sort(np.unique([energy for band in band_edges for energy in band]))
+
+    # Identify energy bands and gaps
+    first_band_max = None
+    second_band_min = None
+    energy_diff_threshold = 0.1  # Energy difference to detect bands
+
+    # Loop through all energies and detect gaps
+    for i in range(1, len(all_energies)):
+        energy_diff = all_energies[i] - all_energies[i - 1]
+        if first_band_max is None:
+            first_band_max = all_energies[i - 1]
+        elif energy_diff > energy_diff_threshold:
+            second_band_min = all_energies[i]
+            break
+
+    # Calculate and return the bandgap
+    if first_band_max is not None and second_band_min is not None:
+        bandgap = second_band_min - first_band_max
+        return bandgap
+    else:
+        return None  # No bandgap found
+
+# Loop over different values of P and calculate the bandgap for each P and a
+def calculate_bandgaps_for_different_P_a(P_values, a_values, E_min, E_max, N):
+    bandgaps_for_all_a = {}
+    
+    for a in a_values:
+        bandgaps_for_a = []
+        for P in P_values:
+            bandgap = find_first_bandgap(P, a, E_min, E_max, N)
+            if bandgap is not None:
+                bandgaps_for_a.append(bandgap)
+            else:
+                bandgaps_for_a.append(0)  # In case no bandgap is found, assign 0
+        bandgaps_for_all_a[a] = bandgaps_for_a
+    
+    return bandgaps_for_all_a
+
+# Define a range of P values to evaluate
+P_values = np.linspace(1, 20, 20)  # P ranges from 1 to 20
+# Define a range of a values to evaluate (in meters)
+a_values = [3e-10, 4e-10, 5e-10, 6e-10]  # Different lattice constants
+
+# Calculate the bandgaps for the range of P and a values
+bandgaps_for_all_a = calculate_bandgaps_for_different_P_a(P_values, a_values, E_min, E_max, N)
+
+# Plot the bandgap vs P for each value of a
+plt.figure(figsize=(8, 6))
+for a in a_values:
+    plt.plot(P_values, bandgaps_for_all_a[a], label=f"a = {a:.1e} m")
+
+plt.title("First Bandgap vs Potential Strength (P) for Different Lattice Constants (a)")
+plt.xlabel("P (Potential Strength)")
+plt.ylabel("Bandgap Energy (eV)")
+plt.grid(True)
+plt.legend(title="Lattice Constant (a)")
+plt.show()
+```
+
