@@ -47,7 +47,7 @@ Using `matplotlib`, we will plot the energy bands as a function of \$k\$. This w
 
 # Python Code for the Kronig-Penney Model
 
-Here’s the complete Python code for the Kronig-Penney model:
+Here’s the complete Python code for the Kronig-Penney model for plotting the band structure:
 
 ```python
 # Python Code for the Kronig-Penney Model
@@ -108,6 +108,7 @@ def plot_kronig_penney(P, a, E_min, E_max, N):
 plot_kronig_penney(P, a, E_min, E_max, N)
 ```
 
+Here’s the complete Python code for the Kronig-Penney model for calculating the bandgap
 
 
 ```python
