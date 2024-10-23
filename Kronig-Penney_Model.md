@@ -113,7 +113,6 @@ Here’s the complete Python code for the Kronig-Penney model for calculating th
 
 ```python
 import numpy as np
-import matplotlib.pyplot as plt
 from scipy.constants import hbar, electron_mass
 
 # Define constants
