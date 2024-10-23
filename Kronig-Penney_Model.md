@@ -47,7 +47,7 @@ Using `matplotlib`, we will plot the energy bands as a function of \$k\$. This w
 
 # Python Code for the Kronig-Penney Model
 
-Here’s the complete Python code for the Kronig-Penney model for plotting the band structure:
+Here’s the complete Python code for the Kronig-Penney model for plotting the band structure and calculating the bandgap:
 
 ```python
 # Python Code for the Kronig-Penney Model
@@ -62,16 +62,14 @@ m = electron_mass  # Electron mass in kg
 hbar = hbar  # Reduced Planck's constant in J·s
 E_min, E_max = 0, 50  # Energy range in eV (adjustable)
 N = 1000  # Number of energy points to evaluate
-k_values = np.linspace(-np.pi/a, np.pi/a, 100)  # Wavevector range
 
 # Define the equation for cos(k*a) in the Kronig-Penney model
 def kronig_penney(E, k, P, a):
-    # Avoid division by zero by handling the case where alpha is very small
     alpha = np.sqrt(2 * m * E * 1.60218e-19) / hbar  # Convert eV to Joules
     
-    # When alpha is very small, handle the division gracefully
+    # Avoid division by zero
     if np.abs(alpha * a) < 1e-10:
-        term = P  # Approximate limit of sin(alpha * a) / (alpha * a) as alpha -> 0
+        term = P
     else:
         term = P * np.sin(alpha * a) / (alpha * a)
     
@@ -98,46 +96,11 @@ def plot_kronig_penney(P, a, E_min, E_max, N):
                 pass
         plt.plot([k] * len(cos_ka), cos_ka, 'bo', markersize=1)  # Band edges
 
-    plt.title(f"Kronig-Penney Model: P={P}, a={a}m")
+    plt.title(f"Kronig-Penney Model: P={P}, a={a} m")
     plt.xlabel("k (1/m)")
     plt.ylabel("Energy (eV)")
     plt.grid(True)
     plt.show()
-
-# Plot the Kronig-Penney model for given parameters
-plot_kronig_penney(P, a, E_min, E_max, N)
-```
-
-Here’s the complete Python code for the Kronig-Penney model for calculating the bandgap
-
-
-```python
-import numpy as np
-from scipy.constants import hbar, electron_mass
-
-# Define constants
-a = 5e-10  # Lattice constant in meters
-P = 10     # Dimensionless potential strength (adjustable)
-m = electron_mass  # Electron mass in kg
-hbar = hbar  # Reduced Planck's constant in J·s
-E_min, E_max = 0, 50  # Energy range in eV (adjustable)
-N = 1000  # Number of energy points to evaluate
-k_values = np.linspace(-np.pi/a, np.pi/a, 100)  # Wavevector range
-
-# Define the equation for cos(k*a) in the Kronig-Penney model
-def kronig_penney(E, k, P, a):
-    alpha = np.sqrt(2 * m * E * 1.60218e-19) / hbar  # Convert eV to Joules
-    
-    # Avoid division by zero
-    if np.abs(alpha * a) < 1e-10:
-        term = P
-    else:
-        term = P * np.sin(alpha * a) / (alpha * a)
-    
-    lhs = np.cos(k * a)
-    rhs = term + np.cos(alpha * a)
-    
-    return lhs - rhs
 
 # Solve the Kronig-Penney model and find the first bandgap
 def find_first_bandgap(P, a, E_min, E_max, N):
@@ -183,7 +146,8 @@ def find_first_bandgap(P, a, E_min, E_max, N):
     else:
         print("No bandgap found within the energy range.")
 
-# Run the function to find the first bandgap
+# Run the functions
+plot_kronig_penney(P, a, E_min, E_max, N)
 find_first_bandgap(P, a, E_min, E_max, N)
 ```
 ## Handling Division by Zero
