@@ -1,10 +1,10 @@
-# A Rigorous Exploration of the Clausius-Mossotti Relation and the Lorentz-Lorenz Equation: A Computational Study
+# An Exploration of the Clausius-Mossotti Relation and the Lorentz-Lorenz Equation: A Computational Study
 
 ## Introduction
 
 The microscopic properties of materials, such as molecular polarizability and structure, profoundly influence their macroscopic electromagnetic behavior. Two fundamental equations that connect these microscopic and macroscopic realms are the Clausius-Mossotti relation and the Lorentz-Lorenz equation. These relations are pivotal in understanding and predicting the dielectric properties and refractive indices of materials, which are essential in fields ranging from material science to optical engineering.
 
-In this comprehensive study, we delve deeply into the theoretical foundations of these relations, providing rigorous derivations and discussing their implications. Furthermore, we implement detailed Python simulations to visualize how the refractive index and dielectric constant change with varying molecular polarizability and number density. This computational approach enhances our understanding of the intricate interplay between microscopic parameters and macroscopic observables.
+In this comprehensive study, we delve deeply into the theoretical foundations of these relations, providing rigorous derivations and discussing their implications. Furthermore, we implement detailed Python simulations to visualize how the refractive index and dielectric constant change with varying molecular polarizability. This computational approach enhances our understanding of the intricate interplay between microscopic parameters and macroscopic observables.
 
 ## Theoretical Background
 
