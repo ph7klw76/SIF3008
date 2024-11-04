@@ -45,7 +45,7 @@ Both properties critically influence a molecule's interaction with electromagnet
 
 - **Mechanism:** In the low-frequency region (microwave to ultra-high frequency, UHF), dipolar polarizability dominates. This form of polarizability arises from permanent or induced dipole moments in molecules that are polar (such as H₂O) and can rotate.
 
-- **Relevance to Global Warming:** Greenhouse gases like water vapor (H₂O) and methane (CH₄) have significant dipolar polarizability in the microwave region due to their rotational modes. The Earth's emitted long-wave radiation includes this frequency range, and these gases absorb microwave radiation and re-emit it isotropically. The re-emission contributes to trapping heat within the Earth's atmosphere, which is the essence of the greenhouse effect. Water vapor, in particular, has a strong impact as it’s a major contributor to the greenhouse effect.
+- **Relevance to Global Warming:** Greenhouse gases like water vapor (H₂O) and methane (CH₄) have significant dipolar polarizability in the microwave region due to their rotational modes. The Earth's emitted long-wave radiation includes this frequency range, and these gases absorb microwave radiation and re-emit it isotropically. 
 
 # 2. Ionic Polarizability (Infrared Region)
 
