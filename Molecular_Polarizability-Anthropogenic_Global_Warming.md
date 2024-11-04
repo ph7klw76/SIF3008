@@ -112,9 +112,9 @@ $$
 
 - **Dipole Moment Change:** For a vibrational mode to be infrared active, there must be a change in the dipole moment with respect to the normal coordinate $Q$:
 
-  $$
+$$
   \left( \frac{\partial \mu}{\partial Q} \right)_{Q=0} \neq 0
-  $$
+$$
 
 - **Selection Rule:** Transitions with $\Delta v = \pm 1$ are allowed under the harmonic approximation.
 
