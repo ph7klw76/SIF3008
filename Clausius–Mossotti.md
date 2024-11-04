@@ -232,7 +232,7 @@ plt.grid(True)
 plt.show()
 ```
 
-
+![image](https://github.com/user-attachments/assets/786613bd-569a-4e9d-80f9-2b7510b3b147)
 
 # Results and Discussion
 
