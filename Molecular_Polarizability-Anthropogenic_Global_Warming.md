@@ -74,6 +74,7 @@ Both properties critically influence a molecule's interaction with electromagnet
 
 - **Spectral Windows:** The figure also highlights "spectral windows" where the atmosphere is less opaque to specific frequencies, allowing some radiation to escape. However, as concentrations of greenhouse gases increase, even these windows can close, exacerbating warming.
 
+![image](https://github.com/user-attachments/assets/b81adfa0-293b-4962-a31c-c452f8d42c4d)
 
 
 
