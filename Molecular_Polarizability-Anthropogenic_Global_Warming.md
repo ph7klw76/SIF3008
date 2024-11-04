@@ -9,6 +9,8 @@ This technical analysis delves into the molecular-level interactions of CO₂ an
 
 ## Molecular Polarizability and Dipole Moments
 
+![image](https://github.com/user-attachments/assets/fb8823a4-65c6-4eaf-a035-cb2f463117c2)
+
 ### Molecular Polarizability ($\alpha$)
 
 Polarizability quantifies the extent to which an external electric field $E$ can distort a molecule's electron cloud, inducing an electric dipole moment $\mu_{\text{ind}}$:
