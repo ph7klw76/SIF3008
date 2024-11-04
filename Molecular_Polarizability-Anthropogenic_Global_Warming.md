@@ -136,7 +136,7 @@ $$
 CO₂ has four fundamental vibrational modes, considering degeneracy:
 
 - **Symmetric Stretch ($\nu_1$)**  
-  - Frequency: ~1337 cm⁻¹  
+  - Frequency: ~1388 cm⁻¹  
   - Symmetry: $\Sigma_g^+$  
   - Infrared Activity: Inactive
 
@@ -168,7 +168,7 @@ CO₂ has four fundamental vibrational modes, considering degeneracy:
 ### Vibrational Modes of H₂O
 
 - **Symmetric Stretch ($\nu_1$)**  
-  - Frequency: ~3657 cm⁻¹  
+  - Frequency: ~3652 cm⁻¹  
   - Symmetry: $A_1$  
   - Infrared Activity: Active
 
