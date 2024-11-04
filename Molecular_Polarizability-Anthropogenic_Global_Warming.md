@@ -123,6 +123,8 @@ $$
 
 ## Carbon Dioxide (CO₂) as a Greenhouse Gas
 
+![image](https://github.com/user-attachments/assets/a810cfc6-1881-4541-a0d9-4dfdba62a116)
+
 ### Molecular Structure and Symmetry
 
 - **Geometry:** Linear molecule (O=C=O).
