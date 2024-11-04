@@ -157,6 +157,8 @@ CO₂ has four fundamental vibrational modes, considering degeneracy:
 
 ## Water Vapor (H₂O) as a Greenhouse Gas
 
+![image](https://github.com/user-attachments/assets/a5d3256b-325a-4052-92f9-2b0b1c161fd1)
+
 ### Molecular Structure and Symmetry
 
 - **Geometry:** Bent molecule with a bond angle of approximately 104.5°.
