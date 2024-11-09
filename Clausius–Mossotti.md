@@ -167,7 +167,7 @@ To visualize these relations, we'll simulate how the dielectric constant and ref
 
 ## Assumptions
 
-- The material is non-magnetic ($\mu_r = 1$).
+- The material is non-magnetic
 - Molecular polarizability is isotropic and frequency-independent.
 
 # Parameters
