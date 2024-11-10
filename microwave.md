@@ -217,7 +217,7 @@ indicating little energy storage or dissipation.
 
 At intermediate frequencies around $\omega \approx \frac{1}{\tau}$, the dielectric loss $\epsilon''(\omega)$ is maximized. This frequency range is crucial for applications like microwave heating, as it represents efficient energy transfer to the medium.
 
-
+![output (9)](https://github.com/user-attachments/assets/e198ad67-d1ba-47a0-96c3-9c8b0100a90d)
 
 The plot illustrates how the dielectric loss (represented by $\epsilon''$) and the energy dissipation (represented by $\omega \epsilon''$) of water molecules change as a function of frequency. The Debye relaxation model shows that the dielectric loss peaks near a characteristic frequency related to the relaxation time $\tau$, which signifies maximal energy absorption by the water molecules. This absorbed energy, when subjected to an oscillating electric field (like microwaves), results in heat generation and subsequent heating of water.
 
