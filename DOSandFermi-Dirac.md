@@ -167,3 +167,42 @@ where:
 
 This is implemented in the `fermi_dirac` function in the code.
 
+![image](https://github.com/user-attachments/assets/f4d8efca-885f-4d71-90c1-87bab0432091)
+
+The provided plots illustrate the density of states (DOS) for metals and semiconductors, the Fermi-Dirac distribution at different temperatures, and the electron occupation for both materials across a range of energies. Below is a detailed breakdown of each subplot:
+
+### 1. Density of States (Left Plot)
+
+**Metal (Blue Curve)**:
+- The DOS for the metal increases as $E$ starting from $E = 0$, which aligns with the theoretical prediction for a three-dimensional free electron gas.
+- This behavior signifies that the number of available quantum states increases as energy increases.
+
+**Semiconductor (Orange Curve)**:
+- The DOS for the semiconductor remains zero until a certain energy threshold, corresponding to the bandgap energy (1.1 eV in this case).
+- After the bandgap, the DOS rises as $\sqrt{E - E_g}$, reflecting the availability of states above the conduction band edge.
+- This plot correctly demonstrates the presence of a bandgap characteristic of semiconductors, with no states available for energies below the conduction band.
+
+### 2. Fermi-Dirac Distribution (Middle Plot)
+
+- The Fermi-Dirac distribution function is plotted for three different temperatures (100 K, 300 K, and 600 K).
+
+  **At 100 K (Blue Curve)**:
+  - The distribution is sharp and centered around the Fermi level (0 eV). Most states below the Fermi energy are fully occupied ($f(E) \approx 1$) and those above it are nearly unoccupied ($f(E) \approx 0$).
+  
+  **At 300 K (Orange Curve)**:
+  - The distribution broadens slightly, reflecting thermal excitation of electrons into higher energy states. The transition from fully occupied to unoccupied states around the Fermi level becomes more gradual.
+  
+  **At 600 K (Green Curve)**:
+  - The distribution is even broader, showing a higher probability of electrons occupying states above the Fermi level due to increased thermal energy.
+
+### 3. Electron Occupation (Right Plot)
+
+**Metal (Solid Curves)**:
+- The electron occupation is the product of the DOS and the Fermi-Dirac distribution.
+- At 100 K, most of the states near and below the Fermi level are occupied, with a steep decline in occupation as energy increases. The occupation profile broadens at higher temperatures (300 K and 600 K) due to the increased thermal excitation, leading to more electrons occupying higher energy states.
+
+**Semiconductor (Dashed Curves)**:
+- For all temperatures, there is a negligible electron occupation below the bandgap, consistent with the absence of states in this region.
+- Above the bandgap, the occupation gradually increases, with a more pronounced effect at higher temperatures (300 K and 600 K). This reflects the thermal excitation of electrons into the conduction band, leading to a small but nonzero occupation probability.
+
+
