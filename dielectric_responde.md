@@ -202,8 +202,8 @@ This summation reflects the superposition of different polarization mechanisms, 
 ### Visualization
 The code plots the real and imaginary parts of the complex permittivity as functions of frequency, showing how different mechanisms contribute to the dielectric response across a wide range of frequencies.
 
-- **Real Part ($\epsilon'(\omega)$)**: Shows how the material's ability to store electric energy varies with frequency.
-- **Imaginary Part ($\epsilon''(\omega)$)**: Represents energy dissipation due to different damping mechanisms.
+- **Real Part $\epsilon'(\omega$)**: Shows how the material's ability to store electric energy varies with frequency.
+- **Imaginary Part $\epsilon''(\omega)$**: Represents energy dissipation due to different damping mechanisms.
 
 ### 6. Interactive Slider for Electronic Resonance Frequency
 The code also includes an interactive slider to vary the electronic resonance frequency $\omega_e$, allowing users to observe how changes in this parameter affect the complex permittivity. This helps illustrate the sensitivity of the dielectric response to the underlying material properties.
