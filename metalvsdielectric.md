@@ -164,6 +164,7 @@ plt.grid(True)
 plt.tight_layout()
 plt.show()
 ```
+![image](https://github.com/user-attachments/assets/4819b549-bc08-4e06-b440-3e93e23f400f)
 
 
 Run this code to visualize how the dielectric function and conductivity of a free electron gas vary with frequency. This illustrates how the Drude model predicts metallic behavior, including high reflectivity at low frequencies.
