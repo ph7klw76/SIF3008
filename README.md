@@ -13,6 +13,7 @@ Detailed mathematical descriptions and applications of condensed matter physics 
 
 1. [Molecular Polarizability, Dipole Moments, and the Greenhouse Effect](Molecular_Polarizability-Anthropogenic_Global_Warming.md)
 2. [Heating the water](microwave.md)
+3. [Reflection between Metal and Dielectric](metalvsdielectric.md)
 
 ## Chapter 3
 
