@@ -207,3 +207,5 @@ The code plots the real and imaginary parts of the complex permittivity as funct
 
 ### 6. Interactive Slider for Electronic Resonance Frequency
 The code also includes an interactive slider to vary the electronic resonance frequency $\omega_e$, allowing users to observe how changes in this parameter affect the complex permittivity. This helps illustrate the sensitivity of the dielectric response to the underlying material properties.
+
+![image](https://github.com/user-attachments/assets/edcf0ceb-6389-44c5-a6cb-9bfbf1296602)
