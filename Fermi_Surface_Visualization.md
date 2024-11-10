@@ -69,6 +69,7 @@ plt.show()
 # Plot Brillouin zone
 plot_brillouin_zone()
 ```
+![image](https://github.com/user-attachments/assets/2c9a7184-65c8-4a2e-bf47-8129146eab5c)
 
 ## Fermi Surface Visualization in a 2D Free Electron Model with Brillouin Zone Representation
 
