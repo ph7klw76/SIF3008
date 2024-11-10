@@ -107,3 +107,64 @@ This explains why light can pass through dielectrics with minimal reflection or 
   - No free electrons; electrons are bound and only slightly displaced.
   - Real dielectric constant with a low imaginary component, leading to high transmission.
   - Reflectivity $R$ is low, and transmission $T$ is high.
+ 
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+m = 9.10938356e-31  # Electron mass (kg)
+e = 1.60217662e-19  # Electron charge (C)
+epsilon_0 = 8.854187817e-12  # Vacuum permittivity (F/m)
+n = 8.5e28  # Electron number density (m^-3)
+gamma = 1e13  # Damping constant (s^-1)
+
+# Angular frequency range (rad/s)
+omega = np.linspace(1e12, 1e16, 100000)
+
+# Plasma frequency
+omega_p = np.sqrt(n * e**2 / (epsilon_0 * m))
+
+# Drude model dielectric function
+epsilon_real = 1 - omega_p**2 / (omega**2 + gamma**2)
+epsilon_imag = (omega_p**2 * gamma) / (omega * (omega**2 + gamma**2))
+
+# Complex dielectric function
+epsilon = epsilon_real + 1j * epsilon_imag
+
+# Conductivity
+sigma_real = epsilon_imag * epsilon_0 * omega
+sigma_imag = (1 - epsilon_real) * epsilon_0 * omega
+
+# Plotting
+plt.figure(figsize=(12, 8))
+
+# Dielectric function
+plt.subplot(2, 1, 1)
+plt.plot(omega, epsilon_real, label='Re($\\epsilon(\\omega)$)', color='b')
+plt.plot(omega, epsilon_imag, label='Im($\\epsilon(\\omega)$)', color='r')
+plt.xscale('log')
+plt.xlabel('Frequency (rad/s)')
+plt.ylabel('Dielectric Function')
+plt.title('Drude Model: Dielectric Function')
+plt.legend()
+plt.grid(True)
+
+# Conductivity
+plt.subplot(2, 1, 2)
+plt.plot(omega, sigma_real, label='Re($\\sigma(\\omega)$)', color='b')
+plt.plot(omega, sigma_imag, label='Im($\\sigma(\\omega)$)', color='r')
+plt.xscale('log')
+plt.xlabel('Frequency (rad/s)')
+plt.ylabel('Conductivity (S/m)')
+plt.title('Drude Model: Conductivity')
+plt.legend()
+plt.grid(True)
+
+plt.tight_layout()
+plt.show()
+```
+
+
+Run this code to visualize how the dielectric function and conductivity of a free electron gas vary with frequency. This illustrates how the Drude model predicts metallic behavior, including high reflectivity at low frequencies.
+
