@@ -6,9 +6,13 @@ Detailed mathematical descriptions and applications of condensed matter physics 
 
 ## Chapter 1
 
+1. [Kronig Penney Model](Kronig-Penney_Model.md)
+
 
 ## Chapter 2
 
+1. [Molecular Polarizability, Dipole Moments, and the Greenhouse Effect](Molecular_Polarizability-Anthropogenic_Global_Warming.md)
+2. [Heating the water](microwave.md)
 
 ## Chapter 3
 
