@@ -274,4 +274,24 @@ gamma_slider.on_changed(update)
 
 plt.show()
 ```
+![image](https://github.com/user-attachments/assets/8f32da49-a7ae-4a7d-af5c-a4a9124b20f8)
+
+### Top Plot (Real Part of Permittivity vs. Angular Frequency)
+
+**Behavior**:  
+The real part of the permittivity $\epsilon'(\omega)$ exhibits a significant change around a certain angular frequency. This behavior is characteristic of resonance phenomena in systems described by a damped harmonic oscillator model.
+
+**Resonance Dip**:  
+Near the resonance frequency, where $\omega$ is close to $\sqrt{\frac{k}{m}}$, the real part experiences a rapid transition. This transition represents the system's shift from storing energy (dominated by elastic restoring forces) to being dominated by dissipative effects due to the damping term.
+
+**High-Frequency Limit**:  
+As the angular frequency increases beyond the resonance region, the real part of the permittivity stabilizes to a lower value. This indicates that the system's ability to store energy diminishes as $\omega$ moves far away from the resonance frequency, where it behaves more like a high-frequency response of a damped material.
+
+### Bottom Plot (Imaginary Part of Permittivity vs. Angular Frequency)
+
+**Peak Behavior**:  
+The imaginary part of the permittivity $\epsilon''(\omega)$ exhibits a pronounced peak at the resonance frequency. This peak indicates the maximum energy dissipation in the system, which corresponds to the frequency where the system absorbs and dissipates the most energy. This is a hallmark of resonance in damped systems.
+
+**Damping and Loss**:  
+The height and width of the peak depend on the damping coefficient $\gamma$. For larger values of $\gamma$, the peak would be lower and broader, indicating more significant dissipation over a wider range of frequencies. Conversely, for smaller values of $\gamma$, the peak would be higher and narrower, showing sharper resonance behavior.
 
