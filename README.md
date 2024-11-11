@@ -17,8 +17,13 @@ Detailed mathematical descriptions and applications of condensed matter physics 
 2. [Molecular Polarizability, Dipole Moments, and the Greenhouse Effect](Molecular_Polarizability-Anthropogenic_Global_Warming.md)
 3. [Heating the water](microwave.md)
 4. [Reflection between Metal and Dielectric](metalvsdielectric.md)
-5. [Why the is phase difference between displacement and electric field?](Why_imgainary_permittivity.md)
+
 
 ## Chapter 3
 
 ## Chapter 4
+
+
+## Questions and Answers 
+
+1. [Why there is phase difference between displacement and electric field?](Why_imgainary_permittivity.md)
