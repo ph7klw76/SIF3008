@@ -104,6 +104,10 @@ Ferroelectric materials are characterized by a spontaneous electric polarization
 
 ## The Order Parameter in Ferroelectric Materials
 
+
+![image](https://github.com/user-attachments/assets/0ee1d8fb-2192-407c-b76b-ceca51a78449)
+
+
 In the context of ferroelectrics, the order parameter is a physical quantity that characterizes the degree of order in the system. For ferroelectric materials, the order parameter is typically chosen as the macroscopic polarization $P$. Above the transition temperature $T_c$ (in the paraelectric phase), the order parameter $P$ is zero, while below $T_c$, the system develops a nonzero spontaneous polarization.
 
 The change in the order parameter is indicative of a phase transition and is key to describing the behavior of ferroelectric materials.
