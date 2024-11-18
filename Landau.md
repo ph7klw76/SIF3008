@@ -211,6 +211,8 @@ $$
 
 ### BaTiO3
 
+![image](https://github.com/user-attachments/assets/b24a6944-a9c5-411a-90d2-08129371a766)
+
 - In the paraelectric phase (above $T_c$), the Ti atoms are symmetrically positioned within the oxygen octahedra, leading to no net dipole moment.
 - As the temperature decreases, the soft mode (involving the relative displacement of Ti ions) lowers in frequency, and the lattice becomes unstable.
 - Below $T_c$, the Ti ions shift off-center, creating a spontaneous polarization due to their relative displacement.
