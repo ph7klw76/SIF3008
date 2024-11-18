@@ -220,3 +220,5 @@ $$
 ### PbTiO3
 
 - Similarly, in PbTiO$_3$, the soft mode involves the displacement of Pb and Ti ions relative to the oxygen sublattice, leading to a ferroelectric phase transition when the mode softens.
+
+![image](https://github.com/user-attachments/assets/e88de0d4-6277-4e51-b675-38625292b4fc)
