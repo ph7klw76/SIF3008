@@ -120,7 +120,7 @@ $$
 F(P) = F_0 + \frac{1}{2} \alpha P^2 + \frac{1}{4} \beta P^4 + \frac{1}{6} \gamma P^6 + \cdots - EP
 $$
 
-- $F_0$ is the free energy of the reference (paraelectric) state.
+- $F_0$ is the free energy of the reference (paraelectric) state. Can be referenced as zero
 - $\alpha, \beta, \gamma$ are temperature-dependent expansion coefficients.
 - $E$ is the applied electric field.
 
