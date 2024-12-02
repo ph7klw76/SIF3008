@@ -22,6 +22,8 @@ Detailed mathematical descriptions and applications of condensed matter physics 
 
 ## Chapter 3
 
+1. [Exchange Interaction in Magnetism](exchange_interaction.md)
+
 ## Chapter 4
 
 
