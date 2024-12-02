@@ -181,7 +181,7 @@ $$
 
 This small $J$ reflects the weak antiferromagnetic exchange interaction in MnO.
 
-# The Hydrogen Molecule Ion ($H_2^+$)
+# The Hydrogen Molecule Ion ($H_2^+$) (ADVANCED STUFF)
 
 The hydrogen molecule ion ($H_2^+$) is the simplest molecular system, consisting of two protons and a single electron. Despite its simplicity, it provides profound insights into the nature of chemical bonding and the role of exchange interactions. In this detailed example, we will:
 
@@ -382,4 +382,71 @@ $$
 
 ## Python Implementation
 We will now implement the calculation using Python, utilizing the `numpy` and `scipy` libraries for numerical computations and integrations.
+```python
+import numpy as np
+from scipy import integrate
+from scipy.constants import physical_constants, pi, e, epsilon_0
 
+# Physical constants
+a0 = physical_constants['Bohr radius'][0]         # Bohr radius (m)
+E0 = -physical_constants['Rydberg constant times hc in eV'][0]  # Hydrogen ground state energy (eV)
+eV_to_J = physical_constants['electron volt'][0]  # eV to Joules conversion factor
+
+# Internuclear distance (adjust as needed)
+R = 2.0 * a0  # in meters
+
+def phi_1s(r):
+    return (1 / np.sqrt(pi * a0**3)) * np.exp(-r / a0)
+
+def overlap_integral(R):
+    def integrand(r, theta):
+        r1 = r
+        r2 = np.sqrt(r1**2 + R**2 - 2 * r1 * R * np.cos(theta))
+        return (r1**2 * np.sin(theta) *
+                phi_1s(r1) * phi_1s(r2))
+    integral = integrate.dblquad(
+        integrand, 0, pi, lambda theta: 0, lambda theta: 10 * a0)
+    return 2 * pi * integral[0]  # Multiply by 2π for azimuthal symmetry
+
+def coulomb_integral(R):
+    def integrand(r, theta):
+        r1 = r
+        r2 = np.sqrt(r1**2 + R**2 - 2 * r1 * R * np.cos(theta))
+        V_B = -e**2 / (4 * pi * epsilon_0 * r2)
+        return (r1**2 * np.sin(theta) *
+                phi_1s(r1)**2 * V_B)
+    integral = integrate.dblquad(
+        integrand, 0, pi, lambda theta: 0, lambda theta: 10 * a0)
+    return 2 * pi * integral[0] / eV_to_J  # Convert to eV
+
+def exchange_integral(R):
+    def integrand(r, theta):
+        r1 = r
+        r2 = np.sqrt(r1**2 + R**2 - 2 * r1 * R * np.cos(theta))
+        V_B = -e**2 / (4 * pi * epsilon_0 * r2)
+        return (r1**2 * np.sin(theta) *
+                phi_1s(r1) * phi_1s(r2) * V_B)
+    integral = integrate.dblquad(
+        integrand, 0, pi, lambda theta: 0, lambda theta: 10 * a0)
+    return 2 * pi * integral[0] / eV_to_J  # Convert to eV
+
+# Compute integrals
+S = overlap_integral(R)
+J = coulomb_integral(R)
+K = exchange_integral(R)
+
+# Hamiltonian matrix elements
+H_AA = E0 + J
+H_AB = E0 * S + K
+
+# Energies
+E_plus = (H_AA + H_AB) / (1 + S)
+E_minus = (H_AA - H_AB) / (1 - S)
+
+# Display results
+print(f"Overlap integral S: {S:.6f}")
+print(f"Coulomb integral J: {J:.6f} eV")
+print(f"Exchange integral K: {K:.6f} eV")
+print(f"Bonding orbital energy E+: {E_plus:.6f} eV")
+print(f"Antibonding orbital energy E-: {E_minus:.6f} eV")
+```
