@@ -88,9 +88,7 @@ $$
 #### Evaluating the Exchange Integral
 The exchange integral $J_{ex}$ is given by:
 
-$$
-J_{ex} = \int \phi_a^*(r_1) \phi_b^*(r_2) \frac{e^2}{4 \pi \varepsilon_0 r_{12}} \phi_b(r_1) \phi_a(r_2) \, dr_1 dr_2
-$$
+![image](https://github.com/user-attachments/assets/facf8ef4-c498-439f-b956-f4b50e58df15)
 
 The energy difference due to exchange interaction is:
 
@@ -103,3 +101,285 @@ Therefore, the exchange constant $J$ is:
 $$
 J = 2 J_{ex}
 $$
+
+# Curie Temperature and Exchange Interaction
+
+## Curie Temperature
+The Curie temperature $T_C$ is the temperature above which a ferromagnetic material becomes paramagnetic.
+
+For iron, $T_C \approx 1043 \, \text{K}$.
+
+The relationship between $J$ and $T_C$ in the mean-field approximation is:
+
+$$
+k_B T_C = \frac{2}{3} z J S(S+1)
+$$
+
+where:
+- $k_B$ is the Boltzmann constant,
+- $z$ is the number of nearest neighbors (8 for BCC lattice),
+- $S = \frac{1}{2}$.
+
+### Calculation
+The exchange constant $J$ is:
+
+$$
+J = \frac{3 k_B T_C}{2 z S(S+1)} = \frac{3 \times (1.38 \times 10^{-23} \, \text{J/K}) \times 1043 \, \text{K}}{2 \times 8 \times \frac{1}{2} \times (\frac{1}{2} + 1)}
+$$
+
+Simplify the calculation:
+
+$$
+J = \frac{3 \times 1.43 \times 10^{-20} \, \text{J}}{2 \times 8 \times \frac{1}{2} \times \frac{3}{2}} = \frac{4.29 \times 10^{-20} \, \text{J}}{12} = 3.58 \times 10^{-21} \, \text{J}
+$$
+
+Convert $J$ to electronvolts:
+
+$$
+J = \frac{3.58 \times 10^{-21} \, \text{J}}{1.602 \times 10^{-19} \, \text{J/eV}} \approx 0.022 \, \text{eV}
+$$
+
+This estimated $J$ is smaller than the exchange splitting derived from band structure, indicating that multiple exchange interactions contribute to $T_C$.
+
+---
+
+## Antiferromagnetic Materials: Manganese Oxide (MnO)
+
+MnO is a prototypical antiferromagnetic material with a rocksalt structure.
+
+### Exchange Interaction in MnO
+- $\text{Mn}^{2+}$ ions have a high-spin $d^5$ configuration.
+- Superexchange interactions via oxygen ions lead to antiparallel spin alignment.
+
+#### Exchange Constant Estimation
+The Néel temperature $T_N$ (analogous to $T_C$ in antiferromagnets) for MnO is $T_N \approx 122 \, \text{K}$.
+
+Using:
+
+$$
+k_B T_N = \frac{2}{3} z |J| S(S+1)
+$$
+
+Assuming $z = 6$ (octahedral coordination) and $S = \frac{5}{2}$:
+
+### Calculation
+$$
+|J| = \frac{3 k_B T_N}{2 z S(S+1)} = \frac{3 \times (1.38 \times 10^{-23} \, \text{J/K}) \times 122 \, \text{K}}{2 \times 6 \times \frac{5}{2} \times (\frac{5}{2} + 1)}
+$$
+
+Simplify:
+
+$$
+|J| = \frac{5.05 \times 10^{-21} \, \text{J}}{2 \times 6 \times \frac{5}{2} \times \frac{7}{2}} = \frac{5.05 \times 10^{-21} \, \text{J}}{105} = 4.81 \times 10^{-23} \, \text{J}
+$$
+
+Convert $J$ to electronvolts:
+
+$$
+|J| = \frac{4.81 \times 10^{-23} \, \text{J}}{1.602 \times 10^{-19} \, \text{J/eV}} \approx 0.0003 \, \text{eV}
+$$
+
+This small $J$ reflects the weak antiferromagnetic exchange interaction in MnO.
+
+# The Hydrogen Molecule Ion ($H_2^+$)
+
+The hydrogen molecule ion ($H_2^+$) is the simplest molecular system, consisting of two protons and a single electron. Despite its simplicity, it provides profound insights into the nature of chemical bonding and the role of exchange interactions. In this detailed example, we will:
+
+1. Perform a complete mathematical derivation of the exchange integral for $H_2^+$.
+2. Describe each mathematical step comprehensively.
+3. Implement the calculation using a Python program.
+
+This example will illustrate how exchange interactions lead to the energy splitting between molecular orbitals, a fundamental concept in quantum chemistry and solid-state physics.
+
+---
+
+## Mathematical Derivation
+
+### Atomic Orbitals
+In the Linear Combination of Atomic Orbitals (LCAO) approximation, we consider atomic orbitals centered on nuclei $A$ and $B$:
+
+$$
+\phi_A(r) = \phi_{1s}(r - R_A)
+$$
+
+$$
+\phi_B(r) = \phi_{1s}(r - R_B)
+$$
+
+where:
+- $\phi_{1s}(r)$ is the hydrogen 1s orbital,
+- $R_A$ and $R_B$ are the positions of nuclei $A$ and $B$,
+- $r$ is the electron coordinate.
+
+The hydrogen 1s orbital is given by:
+
+$$
+\phi_{1s}(r) = \frac{1}{\pi a_0^3} e^{-r / a_0}
+$$
+
+where $a_0$ is the Bohr radius.
+
+---
+
+### Molecular Orbitals
+The molecular orbitals are formed as symmetric and antisymmetric combinations of the atomic orbitals:
+
+#### Bonding Orbital ($\psi_+$):
+$$
+\psi_+(r) = \frac{1}{\sqrt{2(1+S)}} \left[ \phi_A(r) + \phi_B(r) \right]
+$$
+
+#### Antibonding Orbital ($\psi_-$):
+$$
+\psi_-(r) = \frac{1}{\sqrt{2(1-S)}} \left[ \phi_A(r) - \phi_B(r) \right]
+$$
+
+where $S$ is the overlap integral:
+
+$$
+S = \int \phi_A^*(r) \phi_B(r) \, dr
+$$
+
+---
+
+### Overlap Integral ($S$)
+The overlap integral quantifies the overlap between the atomic orbitals:
+
+$$
+S = \int \phi_A^*(r) \phi_B(r) \, dr
+$$
+
+Given the symmetry and real nature of the hydrogen 1s orbitals, the integral simplifies to:
+
+$$
+S = \int \phi_A(r) \phi_B(r) \, dr
+$$
+
+---
+
+### Hamiltonian and Matrix Elements
+The Hamiltonian for the electron in $H_2^+$ is:
+
+$$
+\hat{H} = -\frac{\hbar^2}{2m_e} \nabla^2 - \frac{e^2}{4 \pi \varepsilon_0} \left( \frac{1}{r_A} + \frac{1}{r_B} \right) + \frac{e^2}{4 \pi \varepsilon_0 R}
+$$
+
+where:
+- $m_e$ is the electron mass,
+- $r_A = |r - R_A|$ and $r_B = |r - R_B|$,
+- $R = |R_A - R_B|$ is the internuclear distance.
+
+The Hamiltonian matrix elements are:
+
+#### Coulomb Integral ($H_{AA}$):
+$$
+H_{AA} = \int \phi_A^*(r) \hat{H} \phi_A(r) \, dr
+$$
+
+#### Exchange Integral ($H_{AB}$):
+$$
+H_{AB} = \int \phi_A^*(r) \hat{H} \phi_B(r) \, dr
+$$
+
+Due to symmetry:
+$H_{AA} = H_{BB}, \quad H_{AB} = H_{BA}$
+
+---
+
+### Evaluating $H_{AA}$ and $H_{AB}$
+
+#### Coulomb Integral ($H_{AA}$):
+The Coulomb integral represents the energy expectation value of an electron in atomic orbital $\phi_A$:
+
+$$
+H_{AA} = E_0 + J
+$$
+
+where:
+- $E_0$ is the energy of the hydrogen 1s orbital ($E_0 = -\frac{e^2}{8 \pi \varepsilon_0 a_0} = -13.6 \, \text{eV}$),
+- $J$ accounts for the interaction of the electron with the other proton:
+
+$$
+J = \int \phi_A(r) \left( -\frac{e^2}{4 \pi \varepsilon_0 r_B} \right) \phi_A(r) \, dr
+$$
+
+#### Exchange Integral ($H_{AB}$):
+The exchange integral represents the coupling between atomic orbitals $\phi_A$ and $\phi_B$:
+
+$$
+H_{AB} = S E_0 + K
+$$
+
+where $K$ is:
+
+$$
+K = \int \phi_A(r) \left( -\frac{e^2}{4 \pi \varepsilon_0} \left( \frac{1}{r_A} + \frac{1}{r_B} \right) \right) \phi_B(r) \, dr
+$$
+
+---
+
+### Secular Equations
+The energy eigenvalues are obtained by solving:
+
+$$
+\begin{vmatrix}
+H_{AA} - E & H_{AB} - E S \\
+H_{AB} - E S & H_{AA} - E
+\end{vmatrix} = 0
+$$
+
+Simplifying:
+
+$$
+(H_{AA} - E)^2 - (H_{AB} - E S)^2 = 0
+$$
+
+Solving for $E$:
+
+$$
+E = \frac{H_{AA} \pm H_{AB}}{1 \pm S}
+$$
+
+The $+$ sign corresponds to the bonding orbital ($E_+$).  
+The $-$ sign corresponds to the antibonding orbital ($E_-$).
+
+---
+
+### Analytical Expressions for Integrals
+
+#### Overlap Integral ($S$):
+For hydrogen 1s orbitals separated by distance $R$:
+
+$$
+S = e^{-R / a_0} \left( 1 + \frac{R}{a_0} + \frac{R^2}{3 a_0^2} \right)
+$$
+
+#### Coulomb Integral ($J$):
+$$
+J = -E_0 \left( e^{-2R / a_0} \left( 1 + \frac{R}{a_0} \right) \right)
+$$
+
+#### Exchange Integral ($K$):
+$$
+K = -E_0 \left( e^{-R / a_0} \left( 1 + \frac{R}{a_0} \right) \right)
+$$
+
+---
+
+### Final Energy Expressions
+
+#### Bonding Orbital Energy ($E_+$):
+$$
+E_+ = \frac{H_{AA} + H_{AB}}{1 + S}
+$$
+
+#### Antibonding Orbital Energy ($E_-$):
+$$
+E_- = \frac{H_{AA} - H_{AB}}{1 - S}
+$$
+
+---
+
+## Python Implementation
+We will now implement the calculation using Python, utilizing the `numpy` and `scipy` libraries for numerical computations and integrations.
+
