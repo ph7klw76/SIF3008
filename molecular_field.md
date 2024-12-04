@@ -117,9 +117,8 @@ $$
 
 Substituting, we define an effective molecular field $\mathbf{H}_{\text{mol}}$ such that:
 
-$$
-\mathbf{H}_{\text{mol}} = -\frac{2 J_{\text{eff}}}{g \mu_B} \langle \hat{S} \rangle
-$$
+![image](https://github.com/user-attachments/assets/14c91274-76b4-4926-a041-39e8860ff72c)
+
 
 ---
 
