@@ -23,6 +23,7 @@ Detailed mathematical descriptions and applications of condensed matter physics 
 ## Chapter 3
 
 1. [Exchange Interaction in Magnetism](exchange_interaction.md)
+2. [Molecular Field](molecular_field.md)
 
 ## Chapter 4
 
