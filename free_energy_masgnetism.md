@@ -1,200 +1,181 @@
-# Landau-Lifshitz Theory: Free Energy and Dynamics
-
-## Introduction
+# First Principles and Landau-Lifshitz Equation
 
 We will start from first principles, proceed through the definitions of each energy contribution, and ultimately show how these lead to the effective magnetic field and, finally, the Landau-Lifshitz equation of motion for the magnetization.
 
----
+## 1. Context and Motivation
 
-### 1. Context and Motivation
+Magnetic materials organize their magnetization $M(r, t)$ into domains to minimize their total free energy. The equilibrium domain structure and the response of the magnetization to external perturbations (applied fields, stress, etc.) can be understood by considering a free-energy functional. The Landau-Lifshitz free energy functional is a cornerstone of micromagnetic theory, combining several energy contributions that depend on the spatial distribution of $M$.
 
-Magnetic materials organize their magnetization $\mathbf{M}(\mathbf{r}, t)$ into domains to minimize their total free energy. The equilibrium domain structure and the response of the magnetization to external perturbations (applied fields, stress, etc.) can be understood by considering a free-energy functional. The Landau-Lifshitz free energy functional is a cornerstone of micromagnetic theory, combining several energy contributions that depend on the spatial distribution of $\mathbf{M}$.
+At equilibrium, the magnetization configuration is one that minimizes the total free energy. For dynamical processes, the time evolution of $M$ can be described by a Landau-Lifshitz-type equation of motion derived from the same free-energy functional. Thus, understanding the free energy is essential for both static and dynamic properties of magnetic materials.
 
-- **Equilibrium**: The magnetization configuration minimizes the total free energy.
-- **Dynamics**: The time evolution of $\mathbf{M}$ can be described by a Landau-Lifshitz-type equation derived from the free-energy functional.
+## 2. Landau-Lifshitz Free-Energy Functional
 
----
-
-### 2. Landau-Lifshitz Free-Energy Functional
-
-The total free energy $E$ of a ferromagnetic body is typically expressed as:
+The total free energy $E$ of a ferromagnetic body can typically be expressed as:
 
 $$
-E = E_\text{ex} + E_D + E_\lambda + E_k + E_H,
+E = E_{ex} + E_D + E_\lambda + E_k + E_H,
 $$
 
-where:
+where each term represents a different physical interaction or contribution:
 
-- $E_\text{ex}$: Exchange energy
-- $E_D$: Magnetostatic (demagnetizing) energy
-- $E_\lambda$: Magnetoelastic (magnetostrictive) energy
-- $E_k$: Magnetocrystalline anisotropy energy
-- $E_H$: Zeeman energy
+- **Exchange Energy**: $E_{ex}$
+- **Magnetostatic (Demagnetizing) Energy**: $E_D$
+- **Magnetoelastic (Magnetostrictive) Energy**: $E_\lambda$
+- **Magnetocrystalline Anisotropy Energy**: $E_k$
+- **Zeeman Energy**: $E_H$
 
 We will detail each term below.
 
----
-
-### 2.1 Exchange Energy ($E_\text{ex}$)
+### 2.1 Exchange Energy ($E_{ex}$)
 
 **Physical Origin**:  
-Exchange interactions arise from the quantum mechanical overlap of electronic wavefunctions, favoring parallel alignment of neighboring spins.
+Exchange interactions arise from the quantum mechanical overlap of electronic wavefunctions, favoring parallel alignment of neighboring spins. This leads to a tendency for the magnetization to be spatially uniform, avoiding abrupt changes in direction.
 
-**Form**:  
-For a continuous medium, the exchange energy is:
+**Typical Form**:  
+For a continuous medium, the exchange energy is written as an integral over the volume $V$:
 
 $$
-E_\text{ex} = \int_V d^3r \, A (\nabla \mathbf{m})^2,
+E_{ex} = \int_V d^3r \, A (\nabla m)^2,
 $$
 
-where:
+where $m(r) = M(r)/M_s$ is the normalized magnetization ($M_s = |M|$ at saturation), and $A$ is the exchange stiffness (a positive constant with units of J/m).
 
-- $\mathbf{m}(\mathbf{r}) = \mathbf{M}(\mathbf{r}) / M_s$ is the normalized magnetization.
-- $A$ is the exchange stiffness (units: J/m).
-- $(\nabla \mathbf{m})^2 = (\partial_x m_x)^2 + (\partial_y m_y)^2 + \dots$ penalizes spatial inhomogeneities.
-
----
+Expanding $(\nabla m)^2 = (\partial_x m_x)^2 + (\partial_x m_y)^2 + \dots$ for all spatial derivatives and vector components, this term penalizes spatial inhomogeneities in $m$. Minimizing $E_{ex}$ alone would favor a uniform magnetization state.
 
 ### 2.2 Magnetostatic (Demagnetizing) Energy ($E_D$)
 
 **Physical Origin**:  
-A magnetized body creates a stray field outside its volume, costing energy. This energy can be reduced by forming domains.
+A magnetized body creates a magnetic field in space. The portion of this field outside the body is called the stray field, and it costs energy. The system can lower this energy by forming domains that reduce free magnetic poles on surfaces.
 
-**Form**:  
-If $\mathbf{H}_\text{demag}$ is the demagnetizing field produced by the magnetization $\mathbf{M}$, the magnetostatic energy is:
-
-$$
-E_D = \frac{\mu_0}{2} \int_V d^3r \, \mathbf{M} \cdot \mathbf{H}_\text{demag}.
-$$
-
-**Field Calculation**:  
-$\mathbf{H}_\text{demag}$ satisfies Maxwell’s equations:
+**Formulation**:  
+If $H_{demag}$ is the demagnetizing field produced by the magnetization distribution $M$, the magnetostatic energy is:
 
 $$
-\nabla \cdot \mathbf{B} = 0, \quad \nabla \times \mathbf{H} = 0, \quad \mathbf{B} = \mu_0 (\mathbf{H} + \mathbf{M}),
+E_D = \frac{\mu_0}{2} \int_V d^3r \, M \cdot H_{demag}.
 $$
 
-leading to:
+Here, $H_{demag}$ is determined by the magnetostatic Maxwell’s equations:
 
 $$
-\mathbf{H}_\text{demag} = -\nabla \Phi, \quad \nabla^2 \Phi = \nabla \cdot \mathbf{M}.
+\nabla \cdot B = 0, \quad \nabla \times H = 0, \quad \text{and } B = \mu_0 (H + M).
 $$
 
-Solving for $\Phi$ provides $\mathbf{H}_\text{demag}$ and hence $E_D$.
+From these, one finds $H_{demag} = -\nabla \Phi$, where $\Phi$ is a scalar potential satisfying:
 
----
+$$
+\nabla^2 \Phi = \nabla \cdot M.
+$$
+
+Solving this Poisson equation for a given $M$ gives the demagnetizing field, and thus the magnetostatic energy.
 
 ### 2.3 Magnetoelastic Energy ($E_\lambda$)
 
 **Physical Origin**:  
-Magnetostriction couples a material's strain to its magnetization.
+Magnetostriction couples the material’s elastic strain to its magnetization. When magnetized, a crystal may deform slightly, and conversely, external stress can influence the preferred magnetization direction.
 
-**Form**:  
-The magnetoelastic energy density is:
+**Typical Form**:  
+For small strains $\epsilon_{ij}$, the magnetoelastic energy density can be expanded as:
 
 $$
 f_\lambda \sim B_1 \sum_i \epsilon_{ii} m_i^2 + B_2 (\epsilon_{xy} m_x m_y + \dots),
 $$
 
-where:
-
-- $B_1, B_2$: Magnetoelastic coupling constants.
-- $\epsilon_{ij}$: Strain tensor components.
-- $\mathbf{m}$: Magnetization direction cosines.
-
-The total magnetoelastic energy is:
+where $B_1, B_2$ are magnetoelastic coupling constants and $m_i$ are the direction cosines of $m$. The total energy is:
 
 $$
-E_\lambda = \int_V d^3r \, f_\lambda(\mathbf{m}, \epsilon_{ij}).
+E_\lambda = \int_V d^3r \, f_\lambda(m, \epsilon_{ij}).
 $$
 
----
+Minimizing $E_\lambda$ favors magnetization directions that best relieve or accommodate internal stresses.
 
 ### 2.4 Magnetocrystalline Anisotropy Energy ($E_k$)
 
 **Physical Origin**:  
-Crystal symmetry introduces easy magnetization axes due to spin-orbit coupling.
+Crystalline symmetry leads to certain directions (easy axes) along which it is energetically easier to magnetize. This arises from spin-orbit coupling and the symmetry of the crystal lattice.
 
-**Form**:  
-For a uniaxial crystal:
+**Common Simplified Form**:  
+For a uniaxial crystal with an easy axis along $\hat{z}$, the anisotropy energy density can be written as:
 
 $$
 f_k = K \sin^2 \theta,
 $$
 
-where:
-
-- $K$: Anisotropy constant.
-- $\theta$: Angle between $\mathbf{m}$ and the easy axis.
-
-The total anisotropy energy is:
+where $K$ is the anisotropy constant, and $\theta$ is the angle between $m$ and the easy axis. The total anisotropy energy is:
 
 $$
-E_k = \int_V d^3r \, f_k(\mathbf{m}).
+E_k = \int_V d^3r \, f_k(m).
 $$
 
----
+Minimization of $E_k$ favors magnetization along specified crystallographic directions.
 
 ### 2.5 Zeeman Energy ($E_H$)
 
 **Physical Origin**:  
-An external magnetic field $\mathbf{H}_\text{ext}$ interacts with $\mathbf{M}$, favoring alignment.
+An external magnetic field $H_{ext}$ applied to the system interacts with the magnetization, lowering the energy when $M$ aligns with $H_{ext}$.
 
 **Form**:  
 The Zeeman energy is:
 
 $$
-E_H = -\mu_0 \int_V d^3r \, \mathbf{M} \cdot \mathbf{H}_\text{ext}.
+E_H = -\mu_0 \int_V d^3r \, M \cdot H_{ext}.
 $$
 
----
+This term is minimized by orienting $M$ parallel to $H_{ext}$.
 
-### 3. Total Energy and Variational Principle
+## 3. Total Energy and Variational Principle
 
-The total energy functional is:
-
-$$
-E[\mathbf{M}] = \int_V d^3r \, \left[ A (\nabla \mathbf{m})^2 + f_D(\mathbf{M}) + f_\lambda(\mathbf{m}, \epsilon_{ij}) + f_k(\mathbf{m}) - \mu_0 \mathbf{M} \cdot \mathbf{H}_\text{ext} \right].
-$$
-
-**Equilibrium Condition**:  
-At equilibrium, the magnetization configuration $\mathbf{M}(\mathbf{r})$ satisfies:
+The total energy is:
 
 $$
-\frac{\delta E}{\delta \mathbf{M}} = 0.
+E[M] = \int_V d^3r \, \left[ A (\nabla m)^2 + f_D(M) + f_\lambda(m, \epsilon_{ij}) + f_k(m) - \mu_0 M \cdot H_{ext} \right].
 $$
+
+At equilibrium, the magnetization configuration $M(r)$ satisfies:
+
+$$
+\frac{\delta E}{\delta M} = 0.
+$$
+
+This condition ensures a stationary point of the energy functional.
 
 **Effective Field**:  
-Define the effective field $\mathbf{H}_\text{eff}$ as:
+The effective magnetic field $H_{eff}$ is defined as:
 
 $$
-\mathbf{H}_\text{eff}(\mathbf{r}) = -\frac{\delta E}{\delta \mathbf{M}(\mathbf{r})}.
+H_{eff}(r) = -\frac{\delta E}{\delta M(r)}.
 $$
 
----
+The equilibrium condition becomes $H_{eff} = 0$ in the absence of dynamics.
 
-### 4. Landau-Lifshitz Equation of Motion
+## 4. Landau-Lifshitz Equation of Motion
 
-The Landau-Lifshitz equation describes the time evolution of $\mathbf{M}$:
-
-$$
-\frac{d\mathbf{M}}{dt} = -\gamma \mathbf{M} \times \mathbf{H}_\text{eff},
-$$
-
-where $\gamma$ is the gyromagnetic ratio. Introducing damping, the equation becomes:
+The Landau-Lifshitz equation describes the temporal evolution of $M$:
 
 $$
-\frac{d\mathbf{M}}{dt} = -\gamma \mathbf{M} \times \mathbf{H}_\text{eff} - \frac{\lambda}{M_s} \mathbf{M} \times (\mathbf{M} \times \mathbf{H}_\text{eff}),
+\frac{dM}{dt} = -\gamma M \times H_{eff},
+$$
+
+where $\gamma$ is the gyromagnetic ratio.
+
+**With Damping**:  
+Including dissipation, the equation becomes:
+
+$$
+\frac{dM}{dt} = -\gamma M \times H_{eff} - \frac{\lambda}{M_s} M \times (M \times H_{eff}),
 $$
 
 where $\lambda$ is the damping parameter.
 
----
+**Landau-Lifshitz-Gilbert Form**:
 
-### 5. Summary and Physical Insight
+$$
+\frac{dM}{dt} = -\gamma M \times H_{eff} + \frac{\alpha}{M_s} \left( M \times \frac{dM}{dt} \right),
+$$
 
-- **Energy Contributions**: Exchange, magnetostatic, magnetoelastic, anisotropy, and Zeeman terms shape the total free energy.
-- **Effective Field**: Derived from functional derivatives of the free energy.
-- **Dynamics**: Governed by the Landau-Lifshitz equation, incorporating precession and damping.
+where $\alpha$ is the Gilbert damping constant.
 
-This framework underpins micromagnetic theory, explaining domain structures, spin-wave dynamics, and magnetization switching in magnetic materials.
+## 5. Summary and Physical Insight
+
+- The Landau-Lifshitz free energy governs magnetization configurations, combining exchange, magnetostatic, magnetoelastic, anisotropy, and Zeeman contributions.
+- Minimization of this energy yields equilibrium domain structures and magnetization patterns.
+- The Landau-Lifshitz equation and its Gilbert extension describe magnetization dynamics.
