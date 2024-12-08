@@ -16,15 +16,15 @@ where $m$ takes values $-J, -J + 1, \dots, J - 1, J$.
 2. **Magnetic Moment Along $z$-axis**:  
    For each state labeled by $m$, the magnetic moment along the $z$-axis is given by:
 
-   $$
+$$
    \mu_z = -g \mu_B \frac{\hat{J}_z}{\hbar} = g \mu_B m,
-   $$
+$$
 
    where $\mu_B$ is the Bohr magneton, and $g$ is the Landé g-factor. The sign is often absorbed or interpreted depending on orientation, but here we write:
 
-   $$
+$$
    \mu_z = g \mu_B m
-   $$
+$$
 
    understanding that higher $m$ aligns better with the field.
 
