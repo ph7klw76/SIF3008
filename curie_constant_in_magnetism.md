@@ -17,9 +17,9 @@ where $m$ takes values $-J, -J+1, \dots, J-1, J$.
 1. **Degeneracy**: The degeneracy of the spin states is $2J+1$.
 2. **Magnetic Moment**: For each state labeled by $m$, the magnetic moment along the $z$-axis is given by:
 
-   $$
+$$
    \mu_z = -g \mu_B \frac{\hat{J}_z}{\hbar} = g \mu_B m,
-   $$
+$$
 
    where $\mu_B$ is the Bohr magneton, and $g$ is the Landé g-factor.
 
