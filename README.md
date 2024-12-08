@@ -24,8 +24,8 @@ Detailed mathematical descriptions and applications of condensed matter physics 
 
 1. [Exchange Interaction in Magnetism](exchange_interaction.md)
 2. [Molecular Field](molecular_field.md)
-3. Curie Constant In Magnetism
-4. Free energy equation in Magnetic system
+3. [Curie Constant In Magnetism- Advanced](curie_constant_in_magnetism.md)
+4. [Free energy equation in Magnetic system -Advanced](free_energy_masgnetism.md)
 
 ## Chapter 4
 
