@@ -37,8 +37,9 @@ In metals, $\epsilon_r(\omega)$ is complex and can be approximated by models lik
 ### Surface Plasmon Resonance and Field Enhancement
 
 
-![image](https://github.com/user-attachments/assets/0ceedb3d-b37e-40d4-a9af-d572503eff64)     ![image](https://github.com/user-attachments/assets/4413abf8-4413-45ec-acae-605336ef59ca)
+![image](https://github.com/user-attachments/assets/4413abf8-4413-45ec-acae-605336ef59ca)
 
+![image](https://github.com/user-attachments/assets/5375c5fd-6790-4184-9ce8-cb4785cba7b3)
 
 The NFT is engineered so that at the operating laser wavelength (often near-infrared), it supports a plasmonic mode. This mode confines electromagnetic energy to a very small region, leading to large field enhancements. If $E_0$ is the incident field amplitude, the local field $E_\text{loc}$ at the NFT tip can be tens of times larger:
 
@@ -59,6 +60,9 @@ where $\epsilon_d$ is the dielectric constant of the surrounding medium.
 ---
 
 ## From Light to Heat: Energy Absorption in the Disk
+
+![image](https://github.com/user-attachments/assets/a3c54333-2482-4ee5-bf93-e16923ccdedb)
+
 
 Only a tiny fraction of the launched optical power reaches the disk. Let’s define:
 - $P_\text{inc}$: The optical power incident on the NFT.
