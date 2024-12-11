@@ -64,7 +64,8 @@ As storage devices attempt to record data in smaller and smaller grains to achie
 
 When $K_u V \leq k_B T$, the system is in the **superparamagnetic state**, and the recorded bit of information would spontaneously evaporate due to thermal agitation. This sets the so-called **superparamagnetic limit** for data storage density.
 
-![image](https://github.com/user-attachments/assets/2abe6d33-b40e-4a1c-8a8f-66dc87c23dd7)
+![image](https://github.com/user-attachments/assets/00503fc0-c454-4871-bde1-59036a6863a0)
+
 
 
 ---
