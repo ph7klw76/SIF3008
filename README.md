@@ -30,7 +30,7 @@ Detailed mathematical descriptions and applications of condensed matter physics 
 6. [Hard Disk-thermal stability](Thermal_Stability.md)
 7. [Hard Disk -Heat-Assisted Magnetic Recording](HAMR.md)
 8. [Hard Disk- Design of Longitudinal versus Perpendicular Head](Longitudinal_Perpendicular.md)
-9. [Hard Disk- HARM Head- advanced](Design_of_HAMR_Head.md)
+9. [Hard Disk- HARM Head- Advanced](Design_of_HAMR_Head.md)
    
 ## Chapter 4
 
