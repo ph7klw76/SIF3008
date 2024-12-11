@@ -86,13 +86,12 @@ Because $K_u(T)$ and $M_s(T)$ both decrease with increasing $T$, the ratio $K_u(
   
 $$
   \Delta E_\text{room} = K_u(0) V \gg k_B T_\text{room}.
-
 $$
+
 - At elevated temperature $T_\text{hot}$:
  
 $$
   \Delta E_\text{hot} = K_u(T_\text{hot}) V < K_u(0) V.
-
 $$
 - Resulting lower switching field at hot temperature allows:
   
