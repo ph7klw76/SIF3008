@@ -38,3 +38,4 @@ Detailed mathematical descriptions and applications of condensed matter physics 
 ## Questions and Answers 
 
 1. [Why there is phase difference between displacement and electric field?](Why_imgainary_permittivity.md)
+2. [Can magnet lose its magnetism over time?](magnet_thermodyanmic.md)
