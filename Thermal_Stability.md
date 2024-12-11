@@ -1,6 +1,7 @@
 ### Thermal Stability and the Superparamagnetic Limit
 
 As we push for higher areal densities in HDDs, we must store more bits in a given unit area, which implies that each individual magnetic grain must become smaller. Let’s consider a grain volume $V$. The magnetization of this grain is primarily defined by its magnetic anisotropy energy, which can be simplified (for uniaxial anisotropy) to:
+
 ![image](https://github.com/user-attachments/assets/2abe6d33-b40e-4a1c-8a8f-66dc87c23dd7)
 
 $$
