@@ -83,17 +83,17 @@ Because $K_u(T)$ and $M_s(T)$ both decrease with increasing $T$, the ratio $K_u(
 
 #### Mathematical Summary for HAMR:
 - Original stability at room temperature:
-  $$
+$$
   \Delta E_\text{room} = K_u(0) V \gg k_B T_\text{room}.
-  $$
+$$
 - At elevated temperature $T_\text{hot}$:
-  $$
+$$
   \Delta E_\text{hot} = K_u(T_\text{hot}) V < K_u(0) V.
-  $$
+$$
 - Resulting lower switching field at hot temperature allows:
-  $$
+$$
   H_\text{switch}(T_\text{hot}) < H_\text{switch}(T_\text{room}).
-  $$
+$$
 
 #### 2. Microwave-Assisted Magnetic Recording (MAMR)
 
