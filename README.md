@@ -33,6 +33,7 @@ Detailed mathematical descriptions and applications of condensed matter physics 
 9. [Hard Disk- HARM Head- Advanced](Design_of_HAMR_Head.md)
 10. [Modeling Magnetic Interactions with Monte Carlo Simulations-advanced](Magentic_modeling.md)
 11. [Computational Study of the Ising Model via Python Simulation-advanced](https://www.linkedin.com/pulse/computational-study-ising-model-via-python-simulation-kai-lin-woon-gcxjc)
+12. [MeanFiled Theory in Magnetism- Advanced](https://www.linkedin.com/pulse/mean-field-theory-magnetism-kai-lin-woon-o9omc/?trackingId=CMgWb3oEdCAlnjcY6o8zqw%3D%3D)
    
 ## Chapter 4
 
