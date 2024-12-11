@@ -230,9 +230,10 @@ $$
    - If $\Delta E \leq 0$, accept the new configuration (lower energy state).
    - If $\Delta E > 0$, accept it probabilistically based on:
 
-     $$
+   $$
      \exp(-\Delta E / k_B T)
-     $$
+   $$
+     
 5. **Update Energy and Spin**:
    - If accepted, the system retains the new configuration.
    - Otherwise, revert the spin to its previous state.
