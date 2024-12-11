@@ -26,9 +26,9 @@ Detailed mathematical descriptions and applications of condensed matter physics 
 2. [Molecular Field](molecular_field.md)
 3. [Curie Constant In Magnetism- Advanced](curie_constant_in_magnetism.md)
 4. [Free energy equation in Magnetic system -Advanced](free_energy_masgnetism.md)
-5. [Hard Disc-superparamagnetic](superparamagnetic.md)
-6. [Hard Disc-thermal stability](Thermal_Stability.md)
-7. [Hard Disc -Heat-Assisted Magnetic Recording -advanced](HAMR.md)
+5. [Hard Disk-superparamagnetic](superparamagnetic.md)
+6. [Hard Disk-thermal stability](Thermal_Stability.md)
+7. [Hard Disk -Heat-Assisted Magnetic Recording -advanced](HAMR.md)
    
 ## Chapter 4
 
