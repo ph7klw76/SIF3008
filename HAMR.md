@@ -88,7 +88,7 @@ As $T \to T_C$:
 
 but $K_u(T)$ generally diminishes faster, making $H_\text{switch}(T)$ much smaller than at room temperature.
 
-By applying the write field when the grain is hot (with a reduced $H_\text{switch}(T_\text{hot})$), the grain’s magnetization can be switched using available write fields. After the field is applied, the laser is turned off or moved away, and the medium cools rapidly back to ambient temperature. As it cools:
+By applying the write field when the grain is hot (with a reduced $H_\text{switch}(T_\text{hot})$ ), the grain’s magnetization can be switched using available write fields. After the field is applied, the laser is turned off or moved away, and the medium cools rapidly back to ambient temperature. As it cools:
 - $K_u(T) \to K_u(0)$,
 - $M_s(T) \to M_s(0)$,
 
