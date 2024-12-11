@@ -28,7 +28,7 @@ Detailed mathematical descriptions and applications of condensed matter physics 
 4. [Free energy equation in Magnetic system -Advanced](free_energy_masgnetism.md)
 5. [Hard Disk-superparamagnetic](superparamagnetic.md)
 6. [Hard Disk-thermal stability](Thermal_Stability.md)
-7. [Hard Disk -Heat-Assisted Magnetic Recording -advanced](HAMR.md)
+7. [Hard Disk -Heat-Assisted Magnetic Recording](HAMR.md)
    
 ## Chapter 4
 
