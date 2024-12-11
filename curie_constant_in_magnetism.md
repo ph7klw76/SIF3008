@@ -1,5 +1,8 @@
 # Physical System Setup
 
+![image](https://github.com/user-attachments/assets/cab63dc0-657d-4ee4-a764-24705feaf6a2)
+
+
 We consider a paramagnetic material composed of a large number of identical, non-interacting ions. Each ion has a total angular momentum quantum number $J$. This $J$ encapsulates both spin and orbital contributions, such that the total angular momentum operator $\hat{J}$ satisfies:
 
 $$
