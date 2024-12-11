@@ -93,12 +93,15 @@ By applying the write field when the grain is hot (with a reduced $H_\text{switc
 - $M_s(T) \to M_s(0)$,
 
 restoring the original high anisotropy and ensuring stable data storage.
+![image](https://github.com/user-attachments/assets/a17cfd59-8470-4329-a923-0f2734defe04)
 
 ---
 
 ### Material Selection: FePt and Ultra-High Anisotropy Media
 
 FePt in its L1₀ ordered phase has extremely high anisotropy constants (on the order of several MJ/m³), making it the material of choice for HAMR. At room temperature, these grains are so magnetically hard that no practical field can switch them. Yet, when heated, their anisotropy drops enough that feasible write head fields (close to a few Tesla at most) can reliably switch the bit. Once cooled, the anisotropy returns, ensuring the recorded bit remains stable for years, even at increasingly small grain sizes.
+FePt’s L1₀ structure is critical for its extraordinary anisotropy. In this ordered structure, layers of Fe and Pt alternate along a specific crystallographic direction (often the c-axis in the tetragonal structure). The spin-orbit coupling is enhanced due to the presence of heavy Pt atoms. From a quantum mechanical perspective, the energy splitting of electronic states under spin-orbit coupling leads to a directional preference for the magnetization.The strong hybridization between Fe 3d and Pt 5d orbitals, combined with the crystal field anisotropy, produces a large anisotropy energy. While these calculations are complex, the end result is a large  that arises from fundamental electronic properties at the atomic scale. Higher coercivity indicates the material cannot be demagnetized easily. After annealing at 700 °C, the film can have up to 14KOe coercivity compared to common hard drives that have 5KOe coercivity. Nanoparticles have also been grown with coercivities up to 37 kOe.
+![image](https://github.com/user-attachments/assets/ba3237c3-2fe6-4982-b54b-dce23f435d4c)
 
 ---
 
