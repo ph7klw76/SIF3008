@@ -10,7 +10,7 @@ Permanent magnets are ubiquitous, used in everything from computer hard drives t
 In ferromagnetic materials below their Curie temperature $T_C$, atomic spins (associated with unpaired electron angular momenta) spontaneously align due to the quantum-mechanical exchange interaction. This alignment can persist in the absence of an external magnetic field, producing a finite magnetization $M_s$.
 
 ### Magnetic Anisotropy and Domains
-Real ferromagnets rarely exist as uniformly magnetized single domains. Instead, they break into multiple magnetic domains. The formation of domains reduces the macroscopic demagnetizing field and thus lowers the total free energy of the system. Magnetic anisotropy energies—arising from spin-orbit coupling and crystallographic symmetry—define “easy” directions for magnetization. A uniaxial anisotropy may be described by an energy density:
+Real ferromagnets rarely exist as uniformly magnetized single domains. Instead, they break into multiple magnetic domains. The formation of domains reduces the macroscopic demagnetizing field and thus lowers the total free energy of the system. Magnetic anisotropy energies—arising from spin-orbit coupling and crystallographic symmetry—define “easy” directions for magnetization (To learn more watch https://www.youtube.com/watch?v=iJVmUyx7c54) . A uniaxial anisotropy may be described by an energy density:
 
 $$
 E_K(\theta) = K_u \sin^2 \theta,
