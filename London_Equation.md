@@ -280,7 +280,7 @@ This exponential screening underlies the Meissner effect, where the superconduct
 - **Perfect Diamagnetism**: Because $B$ decays exponentially in the superconductor, the superconductor behaves as if it “repels” magnetic fields.
 - **Meissner Effect**: Even if a magnetic field is present when the material transitions into the superconducting state, the superconductor drives out (screens) that magnetic flux from its bulk.
 
-
-
+Python program to solve the second London equation can be found at 
+https://github.com/ph7klw76/SQA7018/blob/main/London_equation.md
 
 
