@@ -26,8 +26,7 @@ Cooper’s calculation shows that any nonzero attractive interaction can create 
 To see why, let’s write down (in second-quantized form) a reduced Hamiltonian that focuses on electrons near the Fermi surface:
 
 $$
-\hat{H} = \sum_{k, \sigma} \epsilon_k c_{k, \sigma}^\dagger c_{k, \sigma} 
-+ \sum_{k, k'} V_{k, k'} c_{k', \uparrow}^\dagger c_{-k', \downarrow}^\dagger c_{-k, \downarrow} c_{k, \uparrow}.
+\hat{H} = \sum_{k, \sigma} \epsilon_k c_{k, \sigma}^\dagger c_{k, \sigma} + \sum_{k, k'} V_{k, k'} c_{k', \uparrow}^\dagger c_{-k', \downarrow}^\dagger c_{-k, \downarrow} c_{k, \uparrow}.
 $$
 
 Here:
@@ -53,9 +52,9 @@ By plugging $\lvert \Psi_{\text{pair}} \rangle$ into the Schrödinger equation $
 - A bound-state energy $E = 2 \epsilon_F + \delta E$, with $\delta E < 0$.
 - The magnitude of $\delta E$ is exponentially small in $1 / \lvert V \rvert \rho(\epsilon_F)$, where $\rho(\epsilon_F)$ is the density of states at the Fermi level. Formally:
 - 
-  $$
-  \lvert \delta E \rvert \sim \hbar \omega_D \exp\left(-\frac{1}{\lvert V \rvert \rho(E_F)}\right).
-  $$
+$$
+\lvert \delta E \rvert \sim \hbar \omega_D \exp\left(-\frac{1}{\lvert V \rvert \rho(E_F)}\right).
+$$
   
 - The wavefunction in momentum space, $\alpha_k$, peaks around the Fermi surface, ensuring $k \approx k_F$ and $-k \approx -k_F$.
 
@@ -83,10 +82,8 @@ Once Cooper showed that two electrons form a bound pair, the next question Barde
 
 The BCS approach proposes a reduced Hamiltonian that focuses on the pairing of electrons with opposite momenta and spins near the Fermi surface:
 
-$$
-\hat{H}_{\text{BCS}} = \sum_{k, \sigma} \epsilon_k c_{k, \sigma}^\dagger c_{k, \sigma} 
-- \lvert V \rvert \sum_{k, k'} c_{k', \uparrow}^\dagger c_{-k', \downarrow}^\dagger c_{-k, \downarrow} c_{k, \uparrow}.
-$$
+![image](https://github.com/user-attachments/assets/dd6ef1c4-1a90-49fe-b95d-7e8ec863c732)
+
 
 ### Key Points
 
@@ -108,21 +105,17 @@ $$
 
 ### Kinetic / Free Part:
 
-$$
-\hat{H}_0 = \sum_{k, \sigma} \epsilon_k c_{k, \sigma}^\dagger c_{k, \sigma}.
-$$
+![image](https://github.com/user-attachments/assets/7fbb9536-2a64-498d-9179-9fb54676d612)
+
 
 ### Interaction Part (Reduced):
 
-$$
-\hat{H}_{\text{int}} = -\lvert V \rvert \sum_{k, k'} c_{k', \uparrow}^\dagger c_{-k', \downarrow}^\dagger c_{-k, \downarrow} c_{k, \uparrow}.
-$$
+![image](https://github.com/user-attachments/assets/10cb9d76-30b6-472e-b974-bc1b2a2d0156)
 
 ### Total Hamiltonian:
 
-$$
-\hat{H}_{\text{BCS}} = \hat{H}_0 + \hat{H}_{\text{int}}.
-$$
+![image](https://github.com/user-attachments/assets/6c65909c-e770-4ec9-8bdd-6f27d1f0a536)
+
 
 **Core Idea**: The negative sign ($-\lvert V \rvert$) ensures an attractive interaction for opposite-spin electrons with momenta $k, -k$. Under the right conditions (low $T$, near the Fermi level), this leads to a paired superconducting ground state.
 
@@ -162,9 +155,11 @@ Here:
 ### 3.2.1 The Coefficients $u_k, v_k$
 
 These are variational parameters we must determine by minimizing the expectation value of the Hamiltonian $\hat{H}_{\text{BCS}}$. They must satisfy the normalization condition:
+
 $$
 \lvert u_k \rvert^2 + \lvert v_k \rvert^2 = 1.
 $$
+
 This ensures that the state $(u_k + v_k c_{k, \uparrow}^\dagger c_{-k, \downarrow}^\dagger) \lvert 0 \rangle$ is properly normalized for each $k$.
 
 ---
@@ -200,9 +195,8 @@ Below, we show how these steps lead to the famous BCS gap equation and the quasi
 
 The “reduced” BCS Hamiltonian can be written (in second quantization) as:
 
-$$
-\hat{H}_{\text{BCS}} = \sum_{k, \sigma} \epsilon_k c_{k, \sigma}^\dagger c_{k, \sigma} - \lvert V \rvert \sum_{k, k'} c_{k', \uparrow}^\dagger c_{-k', \downarrow}^\dagger c_{-k, \downarrow} c_{k, \uparrow},
-$$
+![image](https://github.com/user-attachments/assets/efcc87ae-4ace-4ef8-ae06-1358c3f7ba3e)
+
 
 where:
 - $\epsilon_k = E_k - \mu$ is the single-particle energy relative to the chemical potential $\mu$.
@@ -216,15 +210,13 @@ where:
 
 Define the pair creation operator:
 
-$$
-\hat{b}_k^\dagger = c_{k, \uparrow}^\dagger c_{-k, \downarrow}^\dagger, \quad \hat{b}_k = c_{-k, \downarrow} c_{k, \uparrow}.
-$$
+![image](https://github.com/user-attachments/assets/74e2135c-c01d-4930-822d-006128c33ead)
+
 
 The interaction term can be written as:
 
-$$
-\hat{H}_{\text{int}} = -\lvert V \rvert \sum_{k, k'} \hat{b}_{k'}^\dagger \hat{b}_k.
-$$
+![image](https://github.com/user-attachments/assets/67114ebb-7dbe-4c72-8c1f-15e8a16e7647)
+
 
 ---
 
@@ -232,9 +224,8 @@ $$
 
 In the mean-field or Hartree–Fock–Bogoliubov approach, we replace the four-fermion term by an approximation:
 
-$$
-\hat{b}_{k'}^\dagger \hat{b}_k \approx \langle \hat{b}_{k'}^\dagger \rangle \hat{b}_k + \hat{b}_{k'}^\dagger \langle \hat{b}_k \rangle - \langle \hat{b}_{k'}^\dagger \rangle \langle \hat{b}_k \rangle,
-$$
+![image](https://github.com/user-attachments/assets/81ae817d-6e77-442e-a06b-b86d60ae0b1b)
+
 
 dropping the “fluctuation” part that is typically small in the superconducting state. Physically, we assume the operator $\hat{b}_k$ can be replaced by its expectation value plus small fluctuations.
 
@@ -325,6 +316,7 @@ A coherent superposition of paired states $(k, -k)$. The variational parameters 
 ## Mean-Field Hamiltonian
 
 By introducing the gap $\Delta$, we decouple the four-fermion interaction into a simpler bilinear form. The resulting Hamiltonian describes Bogoliubov quasiparticles with an energy dispersion:
+
 $$
 E_k = \sqrt{\epsilon_k^2 + \Delta^2}.
 $$
@@ -340,9 +332,11 @@ The value of $\Delta$ must satisfy the integral equation that captures the net e
 ## Exponential Dependence
 
 The gap (and the critical temperature $T_c$) depends on:
+
 $$
 \exp\left[-\frac{1}{\lvert V \rvert \rho(E_F)}\right],
 $$
+
 showcasing how even a small attractive potential can produce a robust pairing phenomenon.
 
 ---
