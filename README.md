@@ -38,7 +38,7 @@ Detailed mathematical descriptions and applications of condensed matter physics 
 ## Chapter 4
 
 1. [London Equation](London_Equation.md)
-2. [BSC Theorym -Advanced](BSC.md)
+2. [BSC Theory -Advanced](BSC.md)
 
 
 ## Questions and Answers 
