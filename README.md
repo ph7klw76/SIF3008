@@ -37,8 +37,12 @@ Detailed mathematical descriptions and applications of condensed matter physics 
    
 ## Chapter 4
 
+1. [London Equation](London_Equation.md)
+2. [BSC Theorey](BSC.md)
+
 
 ## Questions and Answers 
 
 1. [Why there is phase difference between displacement and electric field?](Why_imgainary_permittivity.md)
 2. [Can magnet lose its magnetism over time?](magnet_thermodyanmic.md)
+3. [Two electrons in Cooper pair is quantum entangled?](Cooper_pair.md)
