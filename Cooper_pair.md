@@ -1,4 +1,4 @@
-# Below is a detailed discussion of whether the two electrons that form a Cooper pair in a superconductor are quantum entangled. 
+# The two electrons that form a Cooper pair in a superconductor are quantum entangled? 
 
 We will walk through the physical context, the nature of Cooper pairs, and how entanglement is defined in quantum mechanics.
 
