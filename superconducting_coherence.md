@@ -80,9 +80,11 @@ The magnitude $|\Psi(r)|$ encodes the density of Cooper pairs (or “superfluid 
 The phase $\theta(r)$ determines the quantum mechanical coherence and is tied to supercurrents and flux quantization.
 
 One of the key insights of the Ginzburg–Landau (GL) description is that near $T_c$, the correlation length  
+
 $$
 \xi \sim |T - T_c|^{-1/2}
 $$  
+
 diverges, implying that any local fluctuation in the superconducting wavefunction tends to be correlated over increasingly large distances. 
 
 In somewhat informal terms, if a part of the superconductor wants to have a certain amplitude $|\Psi|$ or a certain phase $\theta$, then regions within a distance $\xi$ are “dragged along.” This large correlation length makes the macroscopic wavefunction “rigid” in the sense that it does not easily accommodate local deviations in amplitude or phase without incurring significant free-energy costs.
