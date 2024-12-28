@@ -46,3 +46,4 @@ Detailed mathematical descriptions and applications of condensed matter physics 
 1. [Why there is phase difference between displacement and electric field?](Why_imgainary_permittivity.md)
 2. [Can magnet lose its magnetism over time?](magnet_thermodyanmic.md)
 3. [Are the two electrons in a Cooper pair quantum entangled??](Cooper_pair.md)
+4. [Why the superconducting wavefunction becomes increasingly rigid near the critical temperature?] (superconducting_coherence.md)
