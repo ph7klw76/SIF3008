@@ -2,7 +2,8 @@
 
 Detailed mathematical descriptions and applications of condensed matter physics to everyday phenomena, along with computational simulations of such phenomena.
 
-![image](https://github.com/user-attachments/assets/2d84094f-8637-4bcf-bd4b-1f722f34440d)
+![image](https://github.com/user-attachments/assets/bb34fc3f-f9d5-42d6-880c-281020267bc6)
+
 
 ## Chapter 1
 
