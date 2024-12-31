@@ -352,5 +352,6 @@ Ginzburg-Landau theory is a cornerstone of modern superconductivity, revealing h
 - Correctly capture flux quantization, vortex phenomena, and supercurrents in Type II materials.
 - Bridge thermodynamic and electrodynamic perspectives, while also connecting to microscopic BCS theory near $T_c$.
 
+simulation of quantum vortices at https://github.com/ph7klw76/SQA7018/blob/main/Time-Dependent_Ginzburg-Landau.md 
 
 
