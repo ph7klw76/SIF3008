@@ -38,13 +38,8 @@ $$
 
 The standard GL free energy density $f$ has four main contributions:
 
-$$
-f(r) = 
-\underbrace{\alpha |\psi|^2}_{\text{Term (1)}} + 
-\underbrace{\frac{\beta}{2} |\psi|^4}_{\text{Term (2)}} +
-\underbrace{\frac{1}{2m} |(-i\hbar \nabla - 2e \mathbf{A}) \psi|^2}_{\text{Term (3)}} +
-\underbrace{\frac{|\mathbf{B}|^2}{2\mu_0}}_{\text{Term (4)}}.
-$$
+![image](https://github.com/user-attachments/assets/6fcb0895-2412-46ae-bb32-81e229663daf)
+
 
 Below, we dissect each term in detail, explaining why it is there and what it represents.
 
@@ -55,9 +50,11 @@ Below, we dissect each term in detail, explaining why it is there and what it re
 #### Term (1): $\alpha |\psi|^2$
 
 - $\alpha$ is a (temperature-dependent) coefficient. Near $T_c$, it is common to set:
-  $$
+  
+$$
   \alpha(T) = \alpha_0 \frac{T - T_c}{T_c},
-  $$
+$$
+
   where $\alpha_0 > 0$.
 
 **Physical meaning**:
@@ -258,9 +255,9 @@ When $H_{c1} < H < H_{c2}$, the GL equations allow mixed-state solutions with vo
 
 1. **Vortex Core:** $\psi \approx 0$, letting magnetic field lines pass through. Each vortex carries one flux quantum:
 
-   $$
+$$
    \Phi_0 = \frac{h}{2e}.
-   $$
+$$
 
 2. **Superconducting Region:** $\psi \approx \text{constant}$ in between the vortices.
 
