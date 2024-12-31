@@ -344,7 +344,7 @@ we get the second GL equation in a physically transparent form, linking the supe
 
 ---
 
-# 7. Conclusion and Further Reading
+# 7. Conclusion
 
 Ginzburg-Landau theory is a cornerstone of modern superconductivity, revealing how a macroscopic wavefunction (the order parameter $\psi$) coexists with electromagnetism. Its two derived equations:
 
