@@ -41,6 +41,7 @@ Detailed mathematical descriptions and applications of condensed matter physics 
 1. [London Equation](London_Equation.md)
 2. [BSC Theory -Advanced](BSC.md)
 3. [Quantum Locking-Advanced](quantum_locking.md)
+4. [Ginzburg-Landau equation in SuperConductor-Advanced](Ginzburg-Landau.md)
 
 
 ## Questions and Answers 
