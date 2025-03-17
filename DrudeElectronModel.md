@@ -197,6 +197,8 @@ $$
 E_F = \frac{\hbar^2}{2m} \left( 3\pi^2 n \right)^{2/3}.
 $$
 
+![image](https://github.com/user-attachments/assets/4949b224-597c-47a2-9243-27db7a6d6b8a)
+
 At finite $T$, the Fermi–Dirac distribution is:
 
 $$
@@ -204,6 +206,8 @@ f(E) = \frac{1}{\exp \left( \frac{E - \mu(T)}{k_B T} \right) + 1},
 $$
 
 where $\mu(T)$ is the chemical potential, which approaches $E_F$ at low $T$.
+
+Visualization of [Fermi-surface](https://github.com/ph7klw76/SIF3008/blob/main/Fermi_Surface_Visualization.md)
 
 ## 3.4. Conductivity Revisited
 
