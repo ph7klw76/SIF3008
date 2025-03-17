@@ -7,9 +7,10 @@ Detailed mathematical descriptions and applications of condensed matter physics 
 
 ## Chapter 1
 
-1. [Kronig Penney Model](Kronig-Penney_Model.md)
-2. [Density of States and Fermi-Dirac Distribution](DOSandFermi-Dirac.md)
-3. [Fermi_surface of free electron model](Fermi_Surface_Visualization.md)
+1. [Drude Model & the Free Electron Model](DrudeElectronModel.md)
+2. [Kronig Penney Model](Kronig-Penney_Model.md)
+3. [Density of States and Fermi-Dirac Distribution](DOSandFermi-Dirac.md)
+4. [Fermi_surface of free electron model](Fermi_Surface_Visualization.md)
 
 
 ## Chapter 2
