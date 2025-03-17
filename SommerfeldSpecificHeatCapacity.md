@@ -112,6 +112,24 @@ $$
 
 where the **derivative $\phi'(E_F)$** is **evaluated at $\varepsilon = E_F$**.
 
+The first term 
+
+$$
+\int_0^{E_F} \varphi(\epsilon) d\epsilon
+$$
+
+corresponds to the **zero-temperature contribution** (like a simple step function integration).
+
+The second term 
+
+$$
+\frac{\pi^2}{6} \varphi' (E_F) (k_B T)^2
+$$
+
+accounts for **thermal effects** and is a **correction** due to the **smooth transition** of the **Fermi-Dirac function**.
+
+This is xpansion of asymptotic series. To learn more about its mathematical background click [here](Expansion of asymptotic series.md)
+
 ### **3.2. Applying to $E(T)$**
 Set:
 
