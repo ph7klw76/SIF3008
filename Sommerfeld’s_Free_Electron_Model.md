@@ -70,6 +70,7 @@ $$
 \frac{\partial f}{\partial t} + \dot{r} \cdot \nabla_r f + \dot{k} \cdot \nabla_k f = \left( \frac{\partial f}{\partial t} \right)_{\text{collisions}}.
 $$
 
+To understand more of the above equation click [here](https://github.com/ph7klw76/SIF3008/blob/main/Boltzmann_Transport_Equation.md) and [here](https://github.com/ph7klw76/SIF3008/blob/main/Boltzmann_%20Transport_Equation2.md) more in depth. 
 In the Sommerfeld model (uniform metal, uniform electric field, no magnetic field):
 
 $$
@@ -144,7 +145,7 @@ J = -2e \int \frac{d^3 k}{(2\pi)^3} v_k f(k).
 $$
 
 The factor of 2 accounts for spin $\frac{1}{2}$ electrons (up & down). Since:
-
+To understand more of the above equation click [here](https://github.com/ph7klw76/SIF3008/blob/main/Current_Density.md)
 $$
 v_k = \frac{\hbar k}{m},
 $$
