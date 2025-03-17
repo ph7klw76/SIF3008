@@ -18,8 +18,10 @@ Here, $f(r,k,t)$ is the distribution function giving the occupancy (or probabili
   - $\dot{k}$ is the rate of change of wavevector $k$ (in a semiclassical model, $\hbar \dot{k} = \text{force}$).
 
 - **$\left( \frac{\partial f}{\partial t} \right)_{\text{collisions}}$**:  
-  The collision term (or scattering term). It represents how scattering processes (with impurities, phonons, other electrons, etc.) change the distribution function. Often, one simplifies it via the “relaxation-time approximation,”  
-  $$ -\frac{f - f_0}{\tau}, $$  
+  The collision term (or scattering term). It represents how scattering processes (with impurities, phonons, other electrons, etc.) change the distribution function. Often, one simplifies it via the “relaxation-time approximation,”
+  
+$$ -\frac{f - f_0}{\tau}, $$  
+
   meaning electrons relax toward some equilibrium distribution $f_0$ on a timescale $\tau$.
 
 Mathematically, the left-hand side expresses the total (phase-space) derivative of $f$ in the absence of collisions. The right-hand side is the net rate of change of $f$ due to collisions.
@@ -48,9 +50,9 @@ Thus, **“quantum particles with a classical phase-space distribution”** mean
 - **Quantum states exist** (quantized $k$-values, band structures, Fermi–Dirac occupancy).
 - But the **dynamics** of how $k$ and $r$ evolve in time is handled semiclassically, using Newton-like equations of motion:
 
-  $$
-  \dot{r} = \frac{\partial E}{\partial k}, \quad \hbar \dot{k} = -eE, \quad \text{etc.}
-  $$
+$$
+\dot{r} = \frac{\partial E}{\partial k}, \quad \hbar \dot{k} = -eE, \quad \text{etc.}
+$$
 
 ---
 
@@ -63,9 +65,9 @@ The Boltzmann transport equation is central to understanding **electrical conduc
 - **Drude or Sommerfeld (Free Electron) Models**:  
   The simplest forms of the Boltzmann equation in a metal, with a relaxation-time approximation, lead directly to Drude-like formulas:
 
-  $$
-  \sigma = \frac{n e^2 \tau}{m}
-  $$
+$$
+\sigma = \frac{n e^2 \tau}{m}
+$$
 
   or the more refined Sommerfeld results.
 
