@@ -112,6 +112,8 @@ $$
 
 where the **derivative $\phi'(E_F)$** is **evaluated at $\varepsilon = E_F$**.
 
+To learn more details of how this intergral coming from click [here](https://github.com/ph7klw76/SIF3008/blob/main/Expansion%20of%20asymptotic%20series.md)
+
 The first term 
 
 $$
