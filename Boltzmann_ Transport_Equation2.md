@@ -1,4 +1,4 @@
-# 1. Statement of the Equation
+# 1. Boltzmann_ Transport_Equation : in depth
 
 $$
 \frac{\partial f}{\partial t} + \dot{r} \cdot \nabla_r f + \dot{k} \cdot \nabla_k f = \left( \frac{\partial f}{\partial t} \right)_{\text{collisions}}.
