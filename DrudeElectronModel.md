@@ -219,6 +219,8 @@ $$
 
 where $m^*$ may be the bare electron mass $m$ (in a perfectly free electron assumption) or an effective mass if we incorporate band effects. The crucial quantum refinement is that only electrons near the Fermi surface can scatter under small thermal excitations. This addresses Drude’s problem of “too many electrons” all contributing equally.
 
+To find out how the it is derived click [here](https://github.com/ph7klw76/SIF3008/blob/main/Sommerfeld%E2%80%99s_Free_Electron_Model.md)
+
 ## 3.5. Electronic Specific Heat
 
 A major triumph of the Sommerfeld approach is the correct form of the electronic contribution to the specific heat. Classically, Drude would assume each electron contributes $(3/2) k_B T$ to the energy, implying a large specific heat. Observed data, however, shows that the electron contribution $c_{v,\text{electronic}}$ grows linearly with $T$ at low temperatures—and is much smaller than the classical estimate.
@@ -230,6 +232,8 @@ c_{v,\text{electronic}} = \gamma T,
 $$
 
 where $\gamma$ depends on the density of states at the Fermi energy. This matches experimental results with much better accuracy.
+
+To learn the derivation click [here](https://github.com/ph7klw76/SIF3008/blob/main/SommerfeldSpecificHeatCapacity.md)
 
 ## 3.6. Limitations of the Free Electron Model
 
