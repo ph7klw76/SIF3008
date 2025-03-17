@@ -98,6 +98,8 @@ $$
 \rho = \frac{1}{\sigma}.
 $$
 
+![image](https://github.com/user-attachments/assets/6646ae7a-f193-4cc5-9c50-10e5d7a0279a)
+
 ### 2.4. Thermal Conductivity in Drude’s Picture
 
 Wiedemann–Franz demanded a link between thermal and electric conduction. Drude borrowed from kinetic theory:
