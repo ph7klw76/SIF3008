@@ -104,7 +104,7 @@ $$
 ### 2.4. Thermal Conductivity in Drude’s Picture
 
 Wiedemann–Franz demanded a link between thermal and electric conduction. Drude borrowed from kinetic theory:
-
+more details at [here](https://github.com/ph7klw76/SIF3008/blob/main/drude_Wiedemann%E2%80%93Franz.md)
 **Thermal Flux:**
 
 $$
