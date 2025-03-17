@@ -98,7 +98,8 @@ $$
 \rho = \frac{1}{\sigma}.
 $$
 
-![image](https://github.com/user-attachments/assets/6646ae7a-f193-4cc5-9c50-10e5d7a0279a)
+![image](https://github.com/user-attachments/assets/a702d091-1742-4911-bb49-dedd6285887f)
+
 
 ### 2.4. Thermal Conductivity in Drude’s Picture
 
