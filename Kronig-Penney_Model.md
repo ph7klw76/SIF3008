@@ -150,6 +150,180 @@ def find_first_bandgap(P, a, E_min, E_max, N):
 plot_kronig_penney(P, a, E_min, E_max, N)
 find_first_bandgap(P, a, E_min, E_max, N)
 ```
+
+Interactive plot
+```python
+import tkinter as tk
+from tkinter import ttk
+import numpy as np
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.figure import Figure
+from scipy.constants import hbar, electron_mass
+
+# --- Kronig-Penney Model Functions ---
+
+def kronig_penney(E, k, P, a):
+    """
+    Calculate the difference between the left-hand side and the right-hand side
+    of the Kronig-Penney equation for given energy E (in eV), wave vector k, potential strength P,
+    and lattice constant a (in meters).
+    """
+    # Convert energy from eV to Joules
+    E_joule = E * 1.60218e-19
+    alpha = np.sqrt(2 * electron_mass * E_joule) / hbar
+    # Avoid division by zero for very small alpha * a
+    if np.abs(alpha * a) < 1e-10:
+        term = P
+    else:
+        term = P * np.sin(alpha * a) / (alpha * a)
+    lhs = np.cos(k * a)
+    rhs = term + np.cos(alpha * a)
+    return lhs - rhs
+
+def plot_kronig_penney(ax, P, a, E_min, E_max, N):
+    """
+    Plot the allowed energy bands for the Kronig-Penney model on the given axis.
+    For each k in the range [-pi/a, pi/a], points satisfying |kronig_penney(E,k,P,a)| <= 1 are plotted.
+    """
+    ax.clear()
+    energies = np.linspace(E_min, E_max, N)
+    # Using a reduced resolution for k to speed up plotting
+    k_values = np.linspace(-np.pi/a, np.pi/a, 200)
+    
+    for k in k_values:
+        allowed_energies = []
+        for E in energies:
+            try:
+                val = np.real(kronig_penney(E, k, P, a))
+                if np.abs(val) <= 1:  # physically meaningful condition
+                    allowed_energies.append(E)
+            except Exception:
+                pass
+        if allowed_energies:
+            ax.plot([k] * len(allowed_energies), allowed_energies, 'bo', markersize=1)
+    
+    ax.set_title(f"Kronig-Penney Model: P={P}, a={a:.1e} m")
+    ax.set_xlabel("k (1/m)")
+    ax.set_ylabel("Energy (eV)")
+    ax.grid(True)
+
+def find_first_bandgap(P, a, E_min, E_max, N):
+    """
+    Find and return a string with the first bandgap information by analyzing the allowed energies.
+    """
+    energies = np.linspace(E_min, E_max, N)
+    k_values = np.linspace(-np.pi/a, np.pi/a, 100)
+    band_edges = []
+    
+    for k in k_values:
+        allowed_energies = []
+        for E in energies:
+            try:
+                val = np.real(kronig_penney(E, k, P, a))
+                if np.abs(val) <= 1:
+                    allowed_energies.append(E)
+            except Exception:
+                pass
+        if allowed_energies:
+            band_edges.append(allowed_energies)
+    
+    # Flatten and sort unique allowed energies
+    all_energies = np.sort(np.unique(np.concatenate(band_edges)))
+    first_band_max = None
+    second_band_min = None
+    energy_diff_threshold = 0.1  # eV threshold to detect a gap
+    
+    for i in range(1, len(all_energies)):
+        diff = all_energies[i] - all_energies[i-1]
+        if first_band_max is None:
+            first_band_max = all_energies[i-1]
+        elif diff > energy_diff_threshold:
+            second_band_min = all_energies[i]
+            break
+
+    if first_band_max is not None and second_band_min is not None:
+        bandgap = second_band_min - first_band_max
+        return (f"First Band Maximum Energy: {first_band_max:.4f} eV\n"
+                f"Second Band Minimum Energy: {second_band_min:.4f} eV\n"
+                f"First Bandgap: {bandgap:.4f} eV")
+    else:
+        return "No bandgap found within the energy range."
+
+# Global parameters for energy range and resolution
+E_min, E_max = 0, 50   # Energy range in eV
+N = 500                # Number of energy points
+
+# --- Tkinter GUI Setup ---
+
+root = tk.Tk()
+root.title("Kronig-Penney Model Simulator")
+
+# Main container frame
+main_frame = ttk.Frame(root)
+main_frame.pack(fill=tk.BOTH, expand=True)
+
+# Plot frame (for the matplotlib figure)
+plot_frame = ttk.Frame(main_frame)
+plot_frame.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+
+# Create a matplotlib figure and embed it in Tkinter
+fig = Figure(figsize=(8, 6), dpi=100)
+ax = fig.add_subplot(111)
+canvas = FigureCanvasTkAgg(fig, master=plot_frame)
+canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
+
+# Control frame for sliders and bandgap info
+control_frame = ttk.Frame(main_frame)
+control_frame.pack(side=tk.BOTTOM, fill=tk.X, padx=10, pady=10)
+
+# Slider for P (Potential Strength)
+P_label = ttk.Label(control_frame, text="P (Potential Strength)")
+P_label.grid(row=0, column=0, sticky="w")
+P_slider = tk.Scale(control_frame, from_=1, to=20, orient=tk.HORIZONTAL,
+                    resolution=0.1, length=300)
+P_slider.set(10)  # Default P value
+P_slider.grid(row=0, column=1, padx=5, pady=5)
+
+# Slider for a (Lattice Constant, in units of 1e-10 m)
+a_label = ttk.Label(control_frame, text="a (Lattice Constant *1e-10 m)")
+a_label.grid(row=1, column=0, sticky="w")
+a_slider = tk.Scale(control_frame, from_=1, to=10, orient=tk.HORIZONTAL,
+                    resolution=0.1, length=300)
+a_slider.set(5)  # Default: a = 5e-10 m
+a_slider.grid(row=1, column=1, padx=5, pady=5)
+
+# Label to display bandgap information
+bandgap_label = ttk.Label(control_frame, text="Bandgap info will appear here")
+bandgap_label.grid(row=2, column=0, columnspan=2, pady=5)
+
+# Function to update the plot based on the current slider values
+def update_simulation(event=None):
+    P_value = P_slider.get()
+    # Convert slider value to actual a in meters (multiplied by 1e-10)
+    a_value = a_slider.get() * 1e-10
+    plot_kronig_penney(ax, P_value, a_value, E_min, E_max, N)
+    canvas.draw()
+
+# Bind slider events to update the simulation
+P_slider.config(command=update_simulation)
+a_slider.config(command=update_simulation)
+
+# Button to compute the bandgap information and display it
+def compute_bandgap():
+    P_value = P_slider.get()
+    a_value = a_slider.get() * 1e-10
+    info = find_first_bandgap(P_value, a_value, E_min, E_max, N)
+    bandgap_label.config(text=info)
+
+bandgap_button = ttk.Button(control_frame, text="Compute Bandgap", command=compute_bandgap)
+bandgap_button.grid(row=3, column=0, columnspan=2, pady=5)
+
+# Initial simulation update
+update_simulation()
+
+# Start the Tkinter event loop
+root.mainloop()
+```
 ## Handling Division by Zero
 
 The key issue we handled in the code is the division by zero error that can occur when \$\alpha\$ approaches zero, particularly for small energies. We addressed this by approximating the term \$\frac{\sin(\alpha a)}{\alpha a}\$ as \$\alpha \to 0\$, which approaches 1. This avoids the issue of division by zero and ensures that our code runs smoothly across the entire energy range.
