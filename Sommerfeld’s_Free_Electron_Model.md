@@ -146,6 +146,7 @@ $$
 
 The factor of 2 accounts for spin $\frac{1}{2}$ electrons (up & down). Since:
 To understand more of the above equation click [here](https://github.com/ph7klw76/SIF3008/blob/main/Current_Density.md)
+
 $$
 v_k = \frac{\hbar k}{m},
 $$
