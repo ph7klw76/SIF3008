@@ -22,6 +22,7 @@ Where:
 - \$\alpha = \sqrt{\frac{2mE}{\hbar^2}}\$, where \$E\$ is the electron energy, \$m\$ is the electron mass, and \$\hbar\$ is the reduced Planck's constant.
 
 The goal is to solve this equation for different values of \$E\$ and \$k\$, which will allow us to determine the allowed energy values (the energy bands) for electrons in a crystal. These bands indicate where electrons can exist, and the band gaps between them show the forbidden regions — crucial for understanding why some materials are conductors, semiconductors, or insulators.
+More detail how this come about and be found [here](CP_derivation.md)
 
 ## Implementing the Kronig-Penney Model in Python
 
