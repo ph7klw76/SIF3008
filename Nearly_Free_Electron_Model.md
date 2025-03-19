@@ -28,7 +28,7 @@ This perturbative approach allows us to understand **how energy gaps form at the
 Before delving into the **Nearly Free Electron Model**, let us first recall the **Free Electron Model**, where electrons move in a **potential-free space** (except for boundary conditions). The **Schrödinger equation** for a free electron is:
 
 $$
-- \frac{\hbar^2}{2m} \nabla^2 \psi(r) = E \psi(r)
+\frac{\hbar^2}{2m} \nabla^2 \psi(r) = E \psi(r)
 $$
 
 For a **plane wave solution**:
@@ -94,8 +94,7 @@ $$
 Substituting into the **Schrödinger equation**, we obtain:
 
 $$
-\sum_{G'} C_{k+G'} \left[ \frac{\hbar^2}{2m} |k+G'|^2 - E \right] e^{i (k+G') \cdot r}
-+ \sum_{G, G'} C_{k+G} V_{G-G'} e^{i (k+G') \cdot r} = 0.
+\sum_{G'} C_{k+G'} \left[ \frac{\hbar^2}{2m} |k+G'|^2 - E \right] e^{i (k+G') \cdot r} + \sum_{G, G'} C_{k+G} V_{G-G'} e^{i (k+G') \cdot r} = 0.
 $$
 
 ---
