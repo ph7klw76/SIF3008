@@ -293,10 +293,6 @@ a_slider = tk.Scale(control_frame, from_=1, to=10, orient=tk.HORIZONTAL,
 a_slider.set(5)  # Default: a = 5e-10 m
 a_slider.grid(row=1, column=1, padx=5, pady=5)
 
-# Label to display bandgap information
-bandgap_label = ttk.Label(control_frame, text="Bandgap info will appear here")
-bandgap_label.grid(row=2, column=0, columnspan=2, pady=5)
-
 # Function to update the plot based on the current slider values
 def update_simulation(event=None):
     P_value = P_slider.get()
@@ -309,21 +305,13 @@ def update_simulation(event=None):
 P_slider.config(command=update_simulation)
 a_slider.config(command=update_simulation)
 
-# Button to compute the bandgap information and display it
-def compute_bandgap():
-    P_value = P_slider.get()
-    a_value = a_slider.get() * 1e-10
-    info = find_first_bandgap(P_value, a_value, E_min, E_max, N)
-    bandgap_label.config(text=info)
-
-bandgap_button = ttk.Button(control_frame, text="Compute Bandgap", command=compute_bandgap)
-bandgap_button.grid(row=3, column=0, columnspan=2, pady=5)
 
 # Initial simulation update
 update_simulation()
 
 # Start the Tkinter event loop
 root.mainloop()
+
 ```
 ## Handling Division by Zero
 
