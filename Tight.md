@@ -54,7 +54,7 @@ where:
 - $k$ is the crystal wavevector within the first Brillouin zone.
 - $N$ is the total number of lattice sites.
 
-This **linear combination of atomic orbitals (LCAO)** ensures the periodic Bloch phase factor $e^{i k \cdot R}$.
+This **linear combination of atomic orbitals (LCAO)** ensures the periodic Bloch phase factor $e^{i k \cdot R}$. To learn more how Gaussian basis is computationally efficient to construct LCAO, click [here](Gaussian.md)
 
 In tight-binding, we assume each $\phi(r - R)$ is quite localized around its site $R$, so overlap between distant sites is negligible. **Only nearest (or maybe next-nearest) neighbor overlaps matter**.
 
@@ -71,13 +71,13 @@ $$
 where:
 
 - $V_{\text{ion}}$ is the ionic potential arranged periodically.
-- $V_{e-e}$ is the electron-electron interaction (often simplified in a mean-field or **Hartree–Fock** approach).
+- $V_{e-e}$ is the electron-electron interaction (often simplified in a mean-field or **Hartree–Fock** approach, to learn more of Hatree-Fock click [here](Hartree-Fock_Theory.md)).
 
 In the simplest tight-binding argument, one **lumps everything** into an effective single-particle potential $U_{\text{eff}}(r)$.
 
 ## 3.2. Matrix Elements in the Atomic Orbital Basis
 
-Let $\phi_{\alpha}(r - R)$ represent an orbital labeled by “$\alpha$” (could be $s$, $p_x$, etc.) on site $R$. We define the on-site and off-site **Hamiltonian matrix elements**:
+Let $\phi_{\alpha}(r - R)$ represent an orbital labeled by $\alpha$ (could be $s$, $p_x$, etc.) on site $R$. We define the on-site and off-site **Hamiltonian matrix elements**:
 
 ### On-site energy:
 
