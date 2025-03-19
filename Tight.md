@@ -54,7 +54,7 @@ where:
 - $k$ is the crystal wavevector within the first Brillouin zone.
 - $N$ is the total number of lattice sites.
 
-This **linear combination of atomic orbitals (LCAO)** ensures the periodic Bloch phase factor $e^{i k \cdot R}$. To learn more how Gaussian basis is computationally efficient to construct LCAO, click [here](Gaussian.md)
+This **linear combination of atomic orbitals (LCAO)** ensures the periodic Bloch phase factor $e^{i k \cdot R}$. To learn more how Gaussian basis is computationally efficient to construct LCAO, click [here](https://github.com/ph7klw76/Advanced_Computational_Methods/blob/main/gaussian.md)
 
 In tight-binding, we assume each $\phi(r - R)$ is quite localized around its site $R$, so overlap between distant sites is negligible. **Only nearest (or maybe next-nearest) neighbor overlaps matter**.
 
