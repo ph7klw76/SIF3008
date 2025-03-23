@@ -88,7 +88,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-![image](https://github.com/user-attachments/assets/f856f4b1-4b90-4d93-a3cc-73b9d22c0402)
+![image](https://github.com/user-attachments/assets/65d8abba-a041-4275-9b3d-a0f485a4c3dc)
 
 
 # Sign Change and Divergence of Effective Mass in the Tight‑Binding Model: Physics and Practical Implications
