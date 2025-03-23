@@ -162,7 +162,7 @@ $$
 E(k) = \varepsilon_0 + 2t \cos(ka).
 $$
 
-This is the **tight-binding dispersion** for a **1D chain** with **one orbital per site**.
+This is the **tight-binding dispersion** for a **1D chain** with **one orbital per site**. To learn more [click here](Bloch_dynamics.md)
 
 ---
 
