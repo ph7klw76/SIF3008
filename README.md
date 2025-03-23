@@ -12,7 +12,8 @@ Detailed mathematical descriptions and applications of condensed matter physics 
 3. [Kronig Penney Model](Kronig-Penney_Model.md)
 4. [Density of States and Fermi-Dirac Distribution](DOSandFermi-Dirac.md)
 5. [Fermi_surface of free electron model](Fermi_Surface_Visualization.md)
-6. [Tight-binding model-Advanced](Tight.md)
+6. [Effective mass](Effective_Mass.md)
+7. [Tight-binding model-Advanced](Tight.md)
 
 
 ## Chapter 2
