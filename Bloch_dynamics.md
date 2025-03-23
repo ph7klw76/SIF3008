@@ -1,3 +1,106 @@
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+
+# ======================
+# Physical Parameters (Natural Units)
+# ======================
+a = 1.0            # Lattice constant
+J = 1.0            # Hopping energy
+E_field = 2.0      # Electric field (adjusted for better visualization)
+e = 1.0            # Elementary charge
+ħ = 1.0            # Reduced Planck constant
+num_frames = 300    # Increased number of frames
+T = 4*np.pi        # Simulation time for 2 full oscillations
+
+# ======================
+# Derived Parameters
+# ======================
+ω_B = e*E_field*a/ħ  # Bloch frequency
+v_max = 2*J*a/ħ      # Maximum group velocity
+x_max = 2*J/(e*E_field)  # Theoretical oscillation amplitude
+
+# ======================
+# Computational Setup
+# ======================
+x = np.linspace(0, 10*a, 1000)  # Extended spatial grid
+times = np.linspace(0, T, num_frames)
+dt = times[1] - times[0]
+
+# Periodic potential modulation
+u_x = 1 + 0.5*np.sin(2*np.pi*x/a)  # Adjusted amplitude for better visibility
+
+# Pre-calculate dynamics using analytical solutions
+k_values = (e*E_field/ħ) * times % (2*np.pi/a)
+phase_terms = (2*J/(e*E_field*a)) * (1 - np.cos(e*E_field*a*times/ħ))
+positions = (2*J/(e*E_field)) * (1 - np.cos(ω_B*times))
+
+# ======================
+# Visualization Setup
+# ======================
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 8), gridspec_kw={'height_ratios': [2, 1]})
+
+# Wavefunction plot
+line1, = ax1.plot(x/a, np.zeros_like(x), lw=1.5, color='tab:blue')
+ax1.set_ylim(-2.2, 2.2)
+ax1.set_ylabel('Re[ψ(x,t)]', fontsize=12)
+ax1.grid(True, alpha=0.3)
+ax1.set_title(f'Bloch Wave Dynamics (E = {E_field} a.u.)', fontsize=14)
+
+# Position plot
+line2, = ax2.plot([], [], 'r-', lw=1.5)
+ax2.set_xlim(0, T)
+ax2.set_ylim(-0.2*x_max, 2.2*x_max)
+ax2.set_xlabel('Time (a.u.)', fontsize=12)
+ax2.set_ylabel('Position (a.u.)', fontsize=12)
+ax2.grid(True, alpha=0.3)
+ax2.set_title('Semiclassical Trajectory', fontsize=14)
+ax2.annotate(f'Theoretical amplitude: {x_max:.2f} a.u.',
+             xy=(0.7, 0.9), xycoords='axes fraction',
+             fontsize=10, color='darkred')
+
+# Time indicator
+time_text = ax2.text(0.02, 0.9, '', transform=ax2.transAxes, fontsize=10)
+
+def animate(i):
+    # Current crystal momentum (wrapped in BZ)
+    k = k_values[i]
+    
+    # Wavefunction calculation
+    plane_wave = np.cos(k*x - phase_terms[i])
+    psi_real = u_x * plane_wave
+    
+    # Update plots
+    line1.set_ydata(psi_real)
+    line2.set_data(times[:i+1], positions[:i+1])
+    time_text.set_text(f't = {times[i]:.2f} a.u. ({(times[i]/T)*100:.1f}% of period)')
+    
+    # Dynamic color change for position plot
+    if positions[i] > 0.9*x_max:
+        line2.set_color('darkred')
+    elif positions[i] < -0.9*x_max:
+        line2.set_color('darkblue')
+    else:
+        line2.set_color('tab:red')
+    
+    return line1, line2, time_text
+
+# Initialize animation
+def init():
+    line1.set_ydata(np.zeros_like(x))
+    line2.set_data([], [])
+    time_text.set_text('')
+    return line1, line2, time_text
+
+# Create animation
+ani = FuncAnimation(fig, animate, frames=num_frames,
+                    init_func=init, interval=30, blit=True)
+
+plt.tight_layout()
+plt.show()
+```
+
 # Bloch Dynamics in Crystalline Solids: From Theory to Numerical Simulation
 
 In this post, we explore the fascinating phenomenon of **Bloch oscillations**—an effect arising when electrons move through a crystalline lattice under the influence of a constant electric field. We will derive key relationships from first principles and then walk through a complete Python simulation that animates the dynamics of Bloch waves and their corresponding semiclassical trajectories.
@@ -298,6 +401,10 @@ This part ties together the plots and makes the simulation interactive.
 In this blog post, we have connected theory with practice by simulating Bloch oscillations in a crystalline solid. We derived the key equations from Bloch’s theorem and the tight-binding model, computed essential parameters, and implemented an animation in Python. This simulation not only visualizes the real-space oscillations of an electron wavepacket but also demonstrates how semiclassical physics can be captured in numerical experiments.
 
 Understanding and simulating such phenomena are critical for modern condensed matter physics and materials science, as they provide insights into electron transport and the behavior of solids under external fields.
+
+
+![image](https://github.com/user-attachments/assets/f4886c03-5d1c-4465-a6d4-d4fbc87e58dd)
+
 
 
 
