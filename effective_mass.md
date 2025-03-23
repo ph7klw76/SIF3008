@@ -88,6 +88,9 @@ plt.tight_layout()
 plt.show()
 ```
 
+![image](https://github.com/user-attachments/assets/f856f4b1-4b90-4d93-a3cc-73b9d22c0402)
+
+
 # Sign Change and Divergence of Effective Mass in the Tight‑Binding Model: Physics and Practical Implications
 
 In crystalline solids, electrons behave very differently from free particles: their “inertial” response to external forces is captured not by the bare electron mass but by an effective mass $m^*$, which encodes the curvature of the energy‑momentum (dispersion) relation in a periodic lattice. Within the one‑dimensional nearest‑neighbor tight‑binding approximation, this effective mass undergoes a dramatic transition across the Brillouin zone—switching sign and even diverging to infinity at specific crystal momenta. These mathematical singularities have profound physical consequences, from the emergence of immobile carriers in flat‑band regions to the onset of hole‑like conduction and heavy‑fermion behavior in real materials.
