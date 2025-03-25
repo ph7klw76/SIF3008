@@ -24,6 +24,105 @@ Where:
 The goal is to solve this equation for different values of \$E\$ and \$k\$, which will allow us to determine the allowed energy values (the energy bands) for electrons in a crystal. These bands indicate where electrons can exist, and the band gaps between them show the forbidden regions — crucial for understanding why some materials are conductors, semiconductors, or insulators.
 More detail how this come about and be found [here](CP_derivation.md)
 
+Interactive python code for the solution
+
+![image](https://github.com/user-attachments/assets/e1fe80d0-50aa-4ceb-9b14-49f2a385b193)
+
+```python
+import tkinter as tk
+from tkinter import ttk
+import numpy as np
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.figure import Figure
+
+# Constants for the equations
+m = 9.10938356e-31      # mass (kg)
+h_bar = 1.0545718e-34   # reduced Planck's constant (J·s)
+k = 5 * 1e-9            # wave number (arbitrary, can be adjusted)
+
+def update_plot(event=None):
+    # Retrieve slider values
+    V = V_slider.get()
+    ao = ao_slider.get()
+    bo = bo_slider.get()
+
+    # Calculate physical parameters from the slider values
+    V0 = V * 1.602176634e-19  # Convert V to Joules (potential energy)
+    b = ao * 1e-10            # Convert ao to meters
+    a = bo * 1e-10            # Convert bo to meters
+
+    # Define x-axis data and compute function values
+    alpha_d = np.linspace(0.1, 20, 400)
+    P = m * V0 * a * b / h_bar**2
+    y1 = P * (np.sin(alpha_d) / alpha_d) + np.cos(alpha_d)
+    y2 = np.ones_like(alpha_d)    # cos(0*alpha_d) is 1
+    y3 = -np.ones_like(alpha_d)   # -cos(0*alpha_d) is -1
+
+    # Clear the current axes and plot the new data
+    ax.clear()
+    ax.plot(alpha_d, y1, label='P*sin(αd)/(αd) + cos(αd)')
+    ax.plot(alpha_d, y2, '--', label='cos(0*αd)')
+    ax.plot(alpha_d, y3, '--', label='-cos(0*αd)')
+
+    ax.set_xlabel('αd')
+    ax.set_ylabel('Function values')
+    ax.set_title(f'Plot of Functions (V0={V0:.3e}, a={a:.3e}, b={b:.3e})')
+    ax.legend()
+
+    # Redraw the canvas with the updated plot
+    canvas.draw()
+
+# Create the main Tkinter window
+root = tk.Tk()
+root.title("Tkinter and Matplotlib Plot")
+
+# Create a frame for the plot
+plot_frame = ttk.Frame(root)
+plot_frame.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+
+# Create a matplotlib Figure and an Axes
+fig = Figure(figsize=(8, 6), dpi=100)
+ax = fig.add_subplot(111)
+
+# Embed the matplotlib figure in the Tkinter window using FigureCanvasTkAgg
+canvas = FigureCanvasTkAgg(fig, master=plot_frame)
+canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
+
+# Create a frame for the sliders
+slider_frame = ttk.Frame(root)
+slider_frame.pack(side=tk.BOTTOM, fill=tk.X, padx=10, pady=10)
+
+# V slider
+V_label = ttk.Label(slider_frame, text="V")
+V_label.grid(row=0, column=0, padx=5, pady=5, sticky="w")
+V_slider = tk.Scale(slider_frame, from_=0.1, to=100, orient=tk.HORIZONTAL,
+                    resolution=0.1, length=300, command=update_plot)
+V_slider.set(25)
+V_slider.grid(row=0, column=1, padx=5, pady=5)
+
+# ao slider
+ao_label = ttk.Label(slider_frame, text="ao")
+ao_label.grid(row=1, column=0, padx=5, pady=5, sticky="w")
+ao_slider = tk.Scale(slider_frame, from_=1, to=10, orient=tk.HORIZONTAL,
+                     resolution=0.1, length=300, command=update_plot)
+ao_slider.set(5)
+ao_slider.grid(row=1, column=1, padx=5, pady=5)
+
+# bo slider
+bo_label = ttk.Label(slider_frame, text="bo")
+bo_label.grid(row=2, column=0, padx=5, pady=5, sticky="w")
+bo_slider = tk.Scale(slider_frame, from_=1, to=10, orient=tk.HORIZONTAL,
+                     resolution=0.1, length=300, command=update_plot)
+bo_slider.set(5)
+bo_slider.grid(row=2, column=1, padx=5, pady=5)
+
+# Create the initial plot
+update_plot()
+
+# Start the Tkinter event loop
+root.mainloop()
+```
+
 ## Implementing the Kronig-Penney Model in Python
 
 The equation cannot be solved analytically, so we will solve it numerically using Python. We'll implement a solution that evaluates the equation for a range of energies and wavevectors and visualizes the allowed energy bands.
