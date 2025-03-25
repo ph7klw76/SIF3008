@@ -602,3 +602,110 @@ plt.legend(title="Lattice Constant (a)")
 plt.show()
 ```
 
+### **Central Model Equation**
+
+The model’s central equation is:
+
+$$
+P \left[ \frac{\sin(\alpha d)}{\alpha d} \right] + \cos(\alpha d) = \cos(Kd)
+$$
+
+where:
+
+$$
+\alpha = \sqrt{\frac{2mE}{\hbar^2}}, \quad
+P = \frac{m V_0 b a}{\hbar^2}, \quad
+d \approx a
+$$
+
+- $\alpha$ is related to the energy $E$ and mass $m$
+- $P$ is the dimensionless barrier strength
+- $d$ is the lattice spacing
+
+---
+
+## **Step 2: Band Gap at the Brillouin Zone Boundary**
+
+At the Brillouin zone boundary ($Kd = \pi$), the equation becomes:
+
+$$
+P \frac{\sin(\alpha d)}{\alpha d} + \cos(\alpha d) = -1
+$$
+
+Let $\alpha d = x$, so:
+
+$$
+P \frac{\sin x}{x} + \cos x = -1 \tag{1}
+$$
+
+The band gap $E_g$ is the energy difference between consecutive solutions of (1).
+
+---
+
+## **Step 3: Perturbative Expansion for Moderate $P$**
+
+For moderate $P$, assume:
+
+$$
+x = \pi + \delta, \quad \delta \ll \pi
+$$
+
+Substitute into (1):
+
+$$
+P \frac{\sin(\pi + \delta)}{\pi + \delta} + \cos(\pi + \delta) = -1
+$$
+
+Using approximations:
+
+- $\sin(\pi + \delta) = -\sin\delta \approx -\delta$
+- $\cos(\pi + \delta) = -\cos\delta \approx -1 + \frac{\delta^2}{2}$
+
+Substitute these into the equation:
+
+$$
+-P \frac{\delta}{\pi} - 1 + \frac{\delta^2}{2} = -1
+$$
+
+Simplify:
+
+$$
+P \frac{\delta}{\pi} + \frac{\delta^2}{2} = 0 \quad \Rightarrow \quad \delta \left( \frac{\delta}{2} - \frac{P}{\pi} \right) = 0
+$$
+
+The non-trivial solution is:
+
+$$
+\delta = \frac{2P}{\pi}
+$$
+
+---
+
+## **Step 4: Band Gap Scaling**
+
+The band edges occur at $\alpha d = \pi \pm \delta$, corresponding to energies:
+
+$$
+E_{\pm} = \frac{\hbar^2 (\pi \pm \delta)^2}{2 m d^2} \approx \frac{\hbar^2 \pi^2}{2 m d^2} \pm \frac{\hbar^2 \pi \delta}{m d^2}
+$$
+
+The band gap is:
+
+$$
+E_g = E_+ - E_- = \frac{2 \hbar^2 \pi \delta}{m d^2}
+$$
+
+Substitute $\delta = \frac{2P}{\pi}$:
+
+$$
+E_g = \frac{2 \hbar^2 \pi}{m d^2} \cdot \frac{2P}{\pi} = \frac{4 \hbar^2 P}{m d^2}
+$$
+
+This yields:
+
+$$
+E_g \propto P
+$$
+
+valid for small $P$.
+
