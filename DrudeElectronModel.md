@@ -101,6 +101,127 @@ $$
 ![image](https://github.com/user-attachments/assets/a702d091-1742-4911-bb49-dedd6285887f)
 
 
+visualization of Drude model code below
+
+```python
+import tkinter as tk
+import math
+import random
+
+class DrudeAnimation:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Drude Model Simulation")
+        
+        # Physical constants
+        self.n = 1e28      # Electron density (m^-3)
+        self.e = 1.6e-19   # Electron charge (C)
+        self.m = 9.1e-31   # Electron mass (kg)
+        self.tau = 1.0     # Mean free time (s)
+        self.speed = 50    # Pixel movement per second
+        self.dt = 0.05     # Time step for animation
+        
+        # Setup GUI components
+        self.create_widgets()
+        
+        # Initialize electrons
+        self.electrons = []
+        self.initialize_electrons()
+        
+        # Start animation loop
+        self.animate()
+
+    def create_widgets(self):
+        """Create and arrange GUI components"""
+        self.main_frame = tk.Frame(self.root)
+        self.main_frame.pack(fill=tk.BOTH, expand=True)
+        
+        # Canvas for animation
+        self.canvas = tk.Canvas(self.main_frame, width=600, height=400, bg='white')
+        self.canvas.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+        
+        # Control panel
+        self.control_frame = tk.Frame(self.main_frame)
+        self.control_frame.pack(side=tk.BOTTOM, fill=tk.X)
+        
+        # Tau slider
+        self.tau_scale = tk.Scale(self.control_frame, from_=0.1, to=5.0, resolution=0.1,
+                                 orient=tk.HORIZONTAL, label="Mean Free Time (τ) [s]",
+                                 command=self.update_tau)
+        self.tau_scale.set(self.tau)
+        self.tau_scale.pack(fill=tk.X, padx=5, pady=5)
+        
+        # Conductivity display
+        self.conductivity_label = tk.Label(self.control_frame, 
+                                         text="Conductivity (σ): 0.00e+00 S/m")
+        self.conductivity_label.pack(pady=5)
+        
+    def initialize_electrons(self):
+        """Create initial electron positions and velocities"""
+        self.num_electrons = 2000
+        for _ in range(self.num_electrons):
+            x = random.uniform(600, self.canvas.winfo_width()-300)
+            y = random.uniform(400, self.canvas.winfo_height()-200)
+            angle = random.uniform(0, 2*math.pi)
+            self.electrons.append({
+                'x': x,
+                'y': y,
+                'vx': self.speed * math.cos(angle),
+                'vy': self.speed * math.sin(angle),
+                'time_since_collision': 0
+            })
+    
+    def update_tau(self, value):
+        """Handle changes in tau value from slider"""
+        self.tau = float(value)
+        self.update_conductivity()
+    
+    def update_conductivity(self):
+        """Calculate and display current conductivity"""
+        sigma = (self.n * (self.e ** 2) * self.tau) / self.m  # Corrected formula
+        self.conductivity_label.config(text=f"Conductivity (σ): {sigma:.2e} S/m")
+    
+    def animate(self):
+        """Main animation loop"""
+        canvas_width = self.canvas.winfo_width()
+        canvas_height = self.canvas.winfo_height()
+        
+        self.canvas.delete("all")
+        
+        for e in self.electrons:
+            # Update position with boundary checking
+            e['x'] += e['vx'] * self.dt
+            e['y'] += e['vy'] * self.dt
+            
+            # Bounce off walls
+            if e['x'] <= 0 or e['x'] >= canvas_width:
+                e['vx'] *= -1
+            if e['y'] <= 0 or e['y'] >= canvas_height:
+                e['vy'] *= -1
+            
+            # Check for collisions
+            e['time_since_collision'] += self.dt
+            if e['time_since_collision'] >= self.tau:
+                angle = random.uniform(0, 2*math.pi)
+                e['vx'] = self.speed * math.cos(angle)
+                e['vy'] = self.speed * math.sin(angle)
+                e['time_since_collision'] = 0  # Reset collision timer
+            
+            # Draw electron
+            self.canvas.create_oval(e['x']-3, e['y']-3, 
+                                   e['x']+3, e['y']+3, fill='blue')
+        
+        # Schedule next animation frame
+        self.root.after(5, self.animate)
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = DrudeAnimation(root)
+    root.mainloop()
+```
+![image](https://github.com/user-attachments/assets/a9c3cdcf-0e68-4488-8c36-cff868b0afee)
+
+
 ### 2.4. Thermal Conductivity in Drude’s Picture
 
 Wiedemann–Franz demanded a link between thermal and electric conduction. Drude borrowed from kinetic theory:
