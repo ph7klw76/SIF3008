@@ -142,3 +142,225 @@ Physically, it manifests whenever the crystal’s real-space periodicity is modi
 - Experimental observations of folded bands are strong evidence of new periodicities in the crystal, whether from structural, chemical, or electronic modifications.
 
 **Overall**, recognizing and interpreting band folding is crucial for analyzing any system where the periodicity is larger or more complex than that of the primitive cell—ranging from advanced semiconductor heterostructures to exotic correlated materials.
+
+
+
+![image](https://github.com/user-attachments/assets/d1b1b037-91e6-4700-9347-886d3b82d865)
+
+```python
+import tkinter as tk
+from tkinter import ttk
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from scipy.ndimage import gaussian_filter1d
+import time
+
+# --- Configuration & Physics Model ---
+
+# Primitive Cell Tight-Binding Model (Nearest Neighbor Square Lattice)
+# E(kx, ky) = E0 - 2t(cos(kx*a) + cos(ky*a))
+# E = 4 - 2*(cos(kx) + cos(ky)) --> Range [0, 8] (t=1, a=1, E0=2)
+def calculate_primitive_energy(kx, ky):
+    return 4.0 - 2.0 * (np.cos(kx) + np.cos(ky))
+
+MIN_ENERGY = 0.0
+MAX_ENERGY = 8.0
+
+# K-path generation parameters
+NUM_KPOINTS_PER_SEGMENT = 30 # Increase for smoother bands, but slower calc
+
+# Slider range for N (Supercell size NxN)
+MIN_N = 1
+MAX_N = 20 # Keep relatively low for interactivity
+
+# --- K-Path Generation ---
+def generate_k_path(N, num_points_per_segment):
+    """Generates k-points and distances for Γ-X-M-Γ path in the small BZ."""
+    if N == 0: N = 1 # Avoid division by zero
+
+    gamma = np.array([0, 0])
+    x = np.array([np.pi / N, 0])
+    m = np.array([np.pi / N, np.pi / N])
+
+    path_gx = np.linspace(gamma, x, num_points_per_segment)
+    path_xm = np.linspace(x, m, num_points_per_segment)
+    path_mg = np.linspace(m, gamma, num_points_per_segment)
+
+    # Ensure endpoints are included exactly once where segments meet
+    k_points = np.vstack((path_gx[:-1], path_xm[:-1], path_mg))
+
+    distances = [0]
+    total_dist = 0
+    current_pos = k_points[0]
+    for i in range(1, len(k_points)):
+        segment_dist = np.linalg.norm(k_points[i] - k_points[i-1]) # Dist between consecutive points
+        total_dist += segment_dist
+        distances.append(total_dist)
+
+    # Distances for high-symmetry points (relative to start)
+    dist_gamma = 0
+    dist_x = np.linalg.norm(x - gamma) * (num_points_per_segment - 1) / num_points_per_segment * len(path_gx[:-1]) / (num_points_per_segment -1) # Approximate based on segments
+    dist_m = distances[len(path_gx[:-1]) + len(path_xm[:-1]) -1] # Index of M point
+    dist_gamma2 = distances[-1] # Total distance
+
+    sym_point_distances = [dist_gamma, distances[len(path_gx)-1], distances[len(path_gx[:-1]) + len(path_xm)-1], dist_gamma2]
+    sym_point_labels = ['Γ', 'X', 'M', 'Γ']
+
+    return k_points, np.array(distances), sym_point_distances, sym_point_labels
+
+# --- Folded Band Calculation ---
+def calculate_folded_bands(k_point, N):
+    """Calculates the N*N folded energy bands for a given k in the small BZ."""
+    kx, ky = k_point
+    indices_i = np.arange(N)
+    indices_j = np.arange(N)
+    II, JJ = np.meshgrid(indices_i, indices_j)
+
+    Kx_folded = kx + 2 * np.pi * II.flatten() / N
+    Ky_folded = ky + 2 * np.pi * JJ.flatten() / N
+
+    folded_energies = calculate_primitive_energy(Kx_folded, Ky_folded)
+    return folded_energies
+
+# --- GUI Setup ---
+root = tk.Tk()
+root.title(f"Band Folding Visualization (Up to N={MAX_N})")
+
+fig = plt.figure(figsize=(10, 5))
+gs = fig.add_gridspec(1, 2, width_ratios=[3, 1], wspace=0.3)
+ax_bands = fig.add_subplot(gs[0])
+ax_dos = fig.add_subplot(gs[1])
+ax_dos.tick_params(axis='y', which='both', left=False, right=False, labelleft=False) # Remove y-axis ticks/labels for DOS
+
+# Embed the plots in Tkinter window
+canvas = FigureCanvasTkAgg(fig, master=root)
+canvas_widget = canvas.get_tk_widget()
+canvas_widget.pack(side=tk.TOP, fill=tk.BOTH, expand=1)
+
+# --- Update Function ---
+def update_plots(val_str):
+    start_time = time.time()
+    try:
+        N = int(float(val_str))
+        if N < MIN_N: N = MIN_N
+    except ValueError:
+        return
+
+    # --- Recalculate Bands ---
+    k_points, k_distances, sym_dists, sym_labels = generate_k_path(N, NUM_KPOINTS_PER_SEGMENT)
+    num_bands = N * N
+    total_k_points = len(k_points)
+    all_bands = np.zeros((total_k_points, num_bands))
+
+    print(f"Calculating for N={N} ({num_bands} bands, {total_k_points} k-points)...")
+    for i, k_vec in enumerate(k_points):
+        all_bands[i, :] = calculate_folded_bands(k_vec, N)
+    calc_duration = time.time() - start_time
+    print(f"Calculation for N={N} took {calc_duration:.3f} seconds.")
+
+    # --- Update Band Plot ---
+    ax_bands.cla() # Clear axes completely
+    # Faster plotting: plot all bands at once
+    # Adjust alpha based on N for better visibility with many bands
+    alpha_val = max(0.05, 0.7 - N*0.02)
+    ax_bands.plot(k_distances, all_bands, 'b-', lw=0.8, alpha=alpha_val)
+
+    # Reset plot limits and labels
+    ax_bands.set_ylabel("Energy (E)")
+    ax_bands.set_ylim(MIN_ENERGY - 0.5, MAX_ENERGY + 0.5)
+    ax_bands.set_xlim(0, k_distances[-1])
+    ax_bands.grid(True, axis='y', linestyle='--', alpha=0.6)
+
+    # Add vertical lines and labels for high-symmetry points
+    ax_bands.set_xticks(sym_dists)
+    ax_bands.set_xticklabels(sym_labels)
+    for dist in sym_dists:
+        ax_bands.axvline(x=dist, color='k', linestyle='-', lw=0.7)
+
+    ax_bands.set_title(f"Folded Band Structure ({N}x{N} Supercell)")
+
+    # --- Calculate and Update DOS from displayed bands ---
+    ax_dos.cla() # Clear DOS axis
+
+    # Flatten all calculated energy points along the path
+    energies_on_path = all_bands.flatten()
+
+    # Create histogram (this is the "DOS" based *only* on the path points)
+    n_bins_dos = 75 # Adjust number of bins as needed
+    dos_counts_path, dos_edges_path = np.histogram(energies_on_path, bins=n_bins_dos, range=(MIN_ENERGY - 0.1, MAX_ENERGY + 0.1))
+    dos_energies_path = (dos_edges_path[:-1] + dos_edges_path[1:]) / 2
+
+    # Normalize counts to represent density (counts per energy interval)
+    # Normalization here is arbitrary in absolute scale, focuses on shape
+    delta_e = dos_edges_path[1] - dos_edges_path[0]
+    # Avoid division by zero if delta_e is somehow zero
+    dos_values_path = dos_counts_path / delta_e if delta_e > 0 else dos_counts_path
+
+    # Smooth for aesthetics (optional, might obscure spikiness)
+    dos_smoothed_path = gaussian_filter1d(dos_values_path, sigma=1.0) # Less smoothing maybe
+
+    # Plot the new "DOS"
+    ax_dos.plot(dos_smoothed_path, dos_energies_path, 'r-') # Plot DOS with Energy on Y-axis
+
+    # Configure DOS plot axes
+    ax_dos.set_xlabel("DOS (from path, arb. units)") # Emphasize origin
+    ax_dos.set_ylim(MIN_ENERGY - 0.5, MAX_ENERGY + 0.5)
+    # Dynamically set x-limit based on calculated DOS values
+    max_dos_val_path = np.max(dos_smoothed_path) * 1.1 if np.max(dos_smoothed_path) > 0 else 1.0
+    ax_dos.set_xlim(0, max_dos_val_path)
+    ax_dos.set_yticks([]) # Remove energy ticks on y-axis
+    ax_dos.set_xticks([]) # Remove DOS value ticks if desired
+    ax_dos.set_title("DOS (from path)") # Clarify title
+    ax_dos.grid(True, axis='x', linestyle='--', alpha=0.6)
+
+
+    # Redraw the canvas
+    redraw_start_time = time.time()
+    canvas.draw_idle()
+    print(f"Redraw took {time.time() - redraw_start_time:.3f} seconds.")
+
+
+# --- Slider ---
+controls_frame = tk.Frame(root)
+controls_frame.pack(side=tk.BOTTOM, fill=tk.X, padx=10, pady=5)
+
+slider_label = tk.Label(controls_frame, text="Supercell Size (N):")
+slider_label.pack(side=tk.LEFT, padx=5)
+
+slider_var = tk.IntVar(value=MIN_N)
+
+n_value_label = tk.Label(controls_frame, text=f"N = {MIN_N}", width=8)
+n_value_label.pack(side=tk.LEFT, padx=5)
+
+# Label for status/timing
+status_label = tk.Label(controls_frame, text="", width=30)
+status_label.pack(side=tk.RIGHT, padx=5)
+
+def slider_cmd_wrapper(val_str):
+    """Updates label, status, and calls the main plot update."""
+    try:
+        N = int(float(val_str))
+        n_value_label.config(text=f"N = {N}")
+        status_label.config(text=f"Calculating N={N}...")
+        root.update_idletasks() # Update GUI to show status message immediately
+        update_plots(val_str)
+        status_label.config(text="Ready") # Update status when done
+    except ValueError:
+        status_label.config(text="Invalid N")
+
+
+slider = ttk.Scale(controls_frame, from_=MIN_N, to=MAX_N, orient=tk.HORIZONTAL,
+                   variable=slider_var,
+                   command=lambda val: slider_cmd_wrapper(str(int(float(val)))), # Ensure integer steps
+                   length=400)
+slider.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=5, pady=10)
+
+
+# --- Run GUI ---
+root.update_idletasks()
+slider_cmd_wrapper(str(slider_var.get())) # Call initial plot using wrapper
+
+root.mainloop()
+```
+
