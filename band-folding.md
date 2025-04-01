@@ -147,6 +147,8 @@ Physically, it manifests whenever the crystal’s real-space periodicity is modi
 
 ![image](https://github.com/user-attachments/assets/d1b1b037-91e6-4700-9347-886d3b82d865)
 
+. The code implements a 2D nearest-neighbor tight-binding model on a square lattice, then constructs an 𝑁×N supercell and visualizes the folded band structure along a chosen high-symmetry path. We also compute an approximate density of states (DOS) from the path. 
+
 ```python
 import tkinter as tk
 from tkinter import ttk
