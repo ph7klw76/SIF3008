@@ -13,7 +13,8 @@ Detailed mathematical descriptions and applications of condensed matter physics 
 4. [Density of States and Fermi-Dirac Distribution](DOSandFermi-Dirac.md)
 5. [Fermi_surface of free electron model](Fermi_Surface_Visualization.md)
 6. [Effective mass](effective_mass.md)
-7. [Tight-binding model-Advanced](Tight.md)
+7. [K-space versus density of state](K-space.md)
+8. [Tight-binding model-Advanced](Tight.md)
 
 
 ## Chapter 2
