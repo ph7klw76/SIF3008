@@ -366,3 +366,5 @@ slider_cmd_wrapper(str(slider_var.get())) # Call initial plot using wrapper
 root.mainloop()
 ```
 
+to understand more about the code above click [here](band-foldingcode.md)
+
