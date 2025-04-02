@@ -224,3 +224,5 @@ update_plots(slider_var.get()) # Call with initial value (as float string)
 
 root.mainloop()
 ```
+
+to understand the code above click [here](kspacecode.md)
