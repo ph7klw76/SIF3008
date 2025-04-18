@@ -27,6 +27,7 @@ Detailed mathematical descriptions and applications of condensed matter physics 
 5. [Heating the water](microwave.md)
 6. [Reflection between Metal and Dielectric](metalvsdielectric.md)
 7. [Ferroelectricity](Landau.md)
+8. [hysteresis visualizer](hysteresis.md)
 
 
 ## Chapter 3
