@@ -20,11 +20,12 @@ Detailed mathematical descriptions and applications of condensed matter physics 
 
 ## Chapter 2
 
-1. [Dielectric Response](dielectric_responde.md)
-2. [Molecular Polarizability, Dipole Moments, and the Greenhouse Effect](Molecular_Polarizability-Anthropogenic_Global_Warming.md)
-3. [Heating the water](microwave.md)
-4. [Reflection between Metal and Dielectric](metalvsdielectric.md)
-5. [Ferroelectricity](Landau.md)
+1. [Polarization](polarization.md)
+2. [Dielectric Response](dielectric_responde.md)
+3. [Molecular Polarizability, Dipole Moments, and the Greenhouse Effect](Molecular_Polarizability-Anthropogenic_Global_Warming.md)
+4. [Heating the water](microwave.md)
+5. [Reflection between Metal and Dielectric](metalvsdielectric.md)
+6. [Ferroelectricity](Landau.md)
 
 
 ## Chapter 3
