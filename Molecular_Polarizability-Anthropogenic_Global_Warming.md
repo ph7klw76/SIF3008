@@ -217,3 +217,271 @@ where $\psi_i$, $\psi_f$: Initial and final vibrational wavefunctions, and $d\ta
 
 The molecular properties of CO₂ and H₂O—specifically polarizability and dipole moments—are fundamental to their roles as greenhouse gases. Quantum mechanical principles explain their infrared activity through vibrational transitions that change the molecular dipole moment. Anthropogenic emissions have significantly increased atmospheric CO₂ concentrations, enhancing radiative forcing and leading to global warming. The water vapor feedback further amplifies this effect, highlighting the interconnectedness of atmospheric processes.
 
+
+```python
+import sys
+import math
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
+    QRadioButton, QGroupBox, QLabel, QSizePolicy
+)
+from PyQt5.QtGui import QPainter, QColor, QBrush, QPen, QFont
+from PyQt5.QtCore import Qt, QTimer, QPointF, QRectF
+
+# --- Constants ---
+ATOM_COLORS = {
+    'C': QColor(60, 60, 60),   # Dark Gray
+    'O': QColor(200, 0, 0)     # Red
+}
+ATOM_RADII = {
+    'C': 20,
+    'O': 16
+}
+BOND_LENGTH = 80  # Visual distance between C and O
+BOND_WIDTH = 4
+ANIMATION_AMPLITUDE = 25 # Max displacement in pixels
+ANIMATION_SPEED_FACTOR = 0.05 # Controls how fast sin wave progresses
+
+# --- Mode Information ---
+MODE_INFO = {
+    "symmetric": {
+        "name": "Symmetric Stretch (ν₁)",
+        "description": (
+            "Both C-O bonds stretch and compress in phase.\n"
+            "The Carbon atom remains stationary.\n"
+            "This mode is IR inactive but Raman active.\n"
+            "Frequency: ~1388 cm⁻¹"
+        ),
+        "freq_factor": 1.0 # Relative visual frequency
+    },
+    "antisymmetric": {
+        "name": "Antisymmetric Stretch (ν₃)",
+        "description": (
+            "One C-O bond stretches while the other compresses.\n"
+            "The Carbon atom moves to keep the center of mass stationary.\n"
+            "This mode is IR active.\n"
+            "Frequency: ~2349 cm⁻¹ (Highest frequency)"
+        ),
+         "freq_factor": 1.8 # Relative visual frequency
+    },
+    "bending": {
+        "name": "Bending (ν₂ - Degenerate)",
+        "description": (
+            "The molecule bends out of its linear shape.\n"
+            "The Carbon atom moves opposite to the Oxygen atoms.\n"
+            "There are two degenerate modes (in-plane and out-of-plane).\n"
+            "This mode is IR active.\n"
+            "Frequency: ~667 cm⁻¹ (Lowest frequency)"
+        ),
+        "freq_factor": 0.6 # Relative visual frequency
+    }
+}
+
+# --- Animation Widget ---
+class AnimationWidget(QWidget):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setMinimumSize(400, 250)
+        self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+
+        # Atom positions: [ (type, eq_x, eq_y, current_x, current_y), ... ]
+        # Equilibrium positions centered around (0,0) initially
+        self.atoms = [
+            {'type': 'O', 'eq_x': -BOND_LENGTH, 'eq_y': 0, 'x': -BOND_LENGTH, 'y': 0},
+            {'type': 'C', 'eq_x': 0,           'eq_y': 0, 'x': 0,           'y': 0},
+            {'type': 'O', 'eq_x': BOND_LENGTH,  'eq_y': 0, 'x': BOND_LENGTH,  'y': 0}
+        ]
+        self.current_mode = None
+        self.animation_time = 0.0
+
+    def set_mode(self, mode_key):
+        self.current_mode = mode_key
+        self.animation_time = 0.0 # Reset time for new mode
+        self.update_positions() # Set initial state for drawing
+
+    def update_positions(self):
+        if not self.current_mode:
+             # Reset to equilibrium if no mode selected
+            for atom in self.atoms:
+                atom['x'] = atom['eq_x']
+                atom['y'] = atom['eq_y']
+            self.update() # Trigger repaint
+            return
+
+        mode_data = MODE_INFO.get(self.current_mode)
+        if not mode_data:
+            return
+
+        # Calculate displacement based on sine wave
+        # displacement = A * sin(2 * pi * f * t) -> simplified to A * sin(speed * time)
+        displacement = ANIMATION_AMPLITUDE * math.sin(
+            ANIMATION_SPEED_FACTOR * mode_data['freq_factor'] * self.animation_time
+        )
+
+        o1, c, o2 = self.atoms # Unpack for easier access
+
+        # Reset to equilibrium before applying displacement
+        for atom in self.atoms:
+            atom['x'] = atom['eq_x']
+            atom['y'] = atom['eq_y']
+
+        # Apply mode-specific displacements
+        if self.current_mode == "symmetric":
+            o1['x'] -= displacement
+            o2['x'] += displacement
+            # C stays still
+
+        elif self.current_mode == "antisymmetric":
+             # O's move opposite to C along x-axis
+             # To approx. conserve center of mass (visual approximation):
+             mC = 12.0
+             mO = 16.0
+             c_disp_factor = 2 * mO / mC # Approx 2.67
+             o1['x'] -= displacement
+             o2['x'] -= displacement
+             c['x'] += c_disp_factor * displacement * 0.5 # Scale C movement visually
+
+        elif self.current_mode == "bending":
+            # O's move together, C moves opposite along y-axis
+            mC = 12.0
+            mO = 16.0
+            c_disp_factor = 2 * mO / mC # Approx 2.67
+            o1['y'] += displacement
+            o2['y'] += displacement
+            c['y'] -= c_disp_factor * displacement * 0.5 # Scale C movement visually
+
+
+        self.update() # Trigger repaint
+
+    def paintEvent(self, event):
+        painter = QPainter(self)
+        painter.setRenderHint(QPainter.Antialiasing)
+
+        # Clear background
+        painter.fillRect(self.rect(), QColor(240, 240, 240))
+
+        # Center the drawing
+        center_x = self.width() / 2
+        center_y = self.height() / 2
+        painter.translate(center_x, center_y)
+
+        # --- Draw Bonds ---
+        pen = QPen(QColor(30, 30, 30), BOND_WIDTH, Qt.SolidLine)
+        pen.setCapStyle(Qt.RoundCap)
+        painter.setPen(pen)
+
+        o1_pos = QPointF(self.atoms[0]['x'], self.atoms[0]['y'])
+        c_pos = QPointF(self.atoms[1]['x'], self.atoms[1]['y'])
+        o2_pos = QPointF(self.atoms[2]['x'], self.atoms[2]['y'])
+
+        # Draw lines slightly shorter to avoid overlap with atom centers
+        line1 = QPointF(c_pos - o1_pos)
+        line1.setX(line1.x() * 0.9)
+        line1.setY(line1.y() * 0.9)
+        painter.drawLine(c_pos - line1 * (ATOM_RADII['C']/line1.manhattanLength()),
+                         o1_pos + line1 * (ATOM_RADII['O']/line1.manhattanLength()))
+
+
+        line2 = QPointF(o2_pos - c_pos)
+        line2.setX(line2.x() * 0.9)
+        line2.setY(line2.y() * 0.9)
+        painter.drawLine(c_pos + line2 * (ATOM_RADII['C']/line2.manhattanLength()),
+                         o2_pos - line2 * (ATOM_RADII['O']/line2.manhattanLength()))
+
+
+        # --- Draw Atoms ---
+        painter.setPen(Qt.NoPen) # No outline for atoms
+        for atom in self.atoms:
+            atom_type = atom['type']
+            radius = ATOM_RADII[atom_type]
+            color = ATOM_COLORS[atom_type]
+            painter.setBrush(QBrush(color))
+            # QPainter draws ellipse from top-left corner
+            rect = QRectF(atom['x'] - radius, atom['y'] - radius, radius * 2, radius * 2)
+            painter.drawEllipse(rect)
+
+
+# --- Main Application Window ---
+class CO2Simulator(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("CO₂ Vibrational Mode Simulator")
+        self.setGeometry(100, 100, 600, 550) # x, y, width, height
+
+        # --- Central Widget and Layout ---
+        central_widget = QWidget()
+        self.setCentralWidget(central_widget)
+        main_layout = QVBoxLayout(central_widget)
+        main_layout.setSpacing(15)
+        main_layout.setContentsMargins(15, 15, 15, 15)
+
+        # --- Title Label ---
+        title_label = QLabel("Carbon Dioxide (CO₂) Vibrations")
+        title_font = QFont("Arial", 16, QFont.Bold)
+        title_label.setFont(title_font)
+        title_label.setAlignment(Qt.AlignCenter)
+        main_layout.addWidget(title_label)
+
+        # --- Mode Selection GroupBox ---
+        mode_groupbox = QGroupBox("Select Vibrational Mode")
+        mode_layout = QHBoxLayout() # Use horizontal layout for radio buttons
+        mode_groupbox.setLayout(mode_layout)
+        main_layout.addWidget(mode_groupbox)
+
+        self.radio_buttons = {}
+        for key, info in MODE_INFO.items():
+            radio = QRadioButton(info["name"])
+            radio.setObjectName(key) # Store key for identification
+            radio.toggled.connect(self.on_mode_selected)
+            mode_layout.addWidget(radio)
+            self.radio_buttons[key] = radio
+
+        # --- Animation Widget ---
+        self.animation_widget = AnimationWidget()
+        main_layout.addWidget(self.animation_widget, 1) # Give it stretch factor
+
+        # --- Explanation Label ---
+        self.explanation_label = QLabel("Select a mode above to see the animation and explanation.")
+        self.explanation_label.setAlignment(Qt.AlignCenter)
+        self.explanation_label.setWordWrap(True)
+        explanation_font = QFont("Arial", 10)
+        self.explanation_label.setFont(explanation_font)
+        self.explanation_label.setMinimumHeight(80)
+        main_layout.addWidget(self.explanation_label)
+
+        # --- Animation Timer ---
+        self.timer = QTimer(self)
+        self.timer.setInterval(30) # Update interval in milliseconds (approx 33 fps)
+        self.timer.timeout.connect(self.run_animation_step)
+
+        # --- Initial State ---
+        self.radio_buttons["symmetric"].setChecked(True) # Start with symmetric mode selected
+
+    def on_mode_selected(self):
+        radio_button = self.sender()
+        if radio_button.isChecked():
+            mode_key = radio_button.objectName()
+            self.animation_widget.set_mode(mode_key)
+            self.explanation_label.setText(MODE_INFO[mode_key]["description"])
+
+            if not self.timer.isActive():
+                self.animation_widget.animation_time = 0.0 # Reset time
+                self.timer.start()
+
+    def run_animation_step(self):
+        self.animation_widget.animation_time += 1.0
+        self.animation_widget.update_positions()
+
+    def closeEvent(self, event):
+        """Ensure timer stops when window closes."""
+        self.timer.stop()
+        event.accept()
+
+
+# --- Main Execution ---
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    simulator = CO2Simulator()
+    simulator.show()
+    sys.exit(app.exec_())
+```
