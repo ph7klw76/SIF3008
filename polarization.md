@@ -292,4 +292,4 @@ if __name__ == "__main__":
     app = PolarizationViewerApp(root)
     root.mainloop()
 
-```python
+```
