@@ -91,7 +91,7 @@ H_c \gtrsim 10^5 \;\text{A·m}^{-1}
 $$
 
    are called magnetically **hard** and retain a large **remanent flux** after the external field is removed.  
-   *Source: Wikipedia*
+
 
 **Example**:  
 Alloys such as Nd‑Fe‑B combine a very high anisotropy constant with strong exchange, so their magnetic domains stay frozen—hence refrigerator-door magnets.  
