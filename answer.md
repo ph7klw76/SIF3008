@@ -1,5 +1,6 @@
 ![image](https://github.com/user-attachments/assets/c3ee6dba-0f8a-478a-a6ff-9d552bf40207)
 
+## Question:In the formation of a Cooper pair, why is it necessary for the two electrons to have opposite momenta and opposite spins? Also, during lattice-mediated attraction, how does an electron become attracted to the positive potential (or 'trail') left behind by another electron as it moves through the lattice, given that electrons normally repel each other due to Coulomb repulsion?"
 
 # Introduction
 
