@@ -83,5 +83,4 @@ Pairing as $(k, -k)$ lets both remain at $E_F$, maximizing binding.
 
 1. L. N. Cooper, “Bound Electron Pairs in a Degenerate Fermi Gas,” *Phys. Rev.* **104**, 1189 (1956).  
 2. J. Bardeen, L. N. Cooper & J. R. Schrieffer, “Theory of Superconductivity,” *Phys. Rev.* **108**, 1175 (1957).  
-3. M. Tinkham, *Introduction to Superconductivity*, 2nd ed., Chapters 3–4, McGraw-Hill (1996).
 
