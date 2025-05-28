@@ -61,3 +61,4 @@ Detailed mathematical descriptions and applications of condensed matter physics 
 3. [Are the two electrons in a Cooper pair quantum entangled??](Cooper_pair.md)
 4. [Why the superconducting wavefunction becomes increasingly rigid near the critical temperature?](superconducting_coherence.md)
 5. [Why Unpaired Electrons Are Not Enough to become magnetic?](unpaired.md)
+6. [In the formation of a Cooper pair, why is it necessary for the two electrons to have opposite momenta and opposite spins? Also, during lattice-mediated attraction, how does an electron become attracted to the positive potential (or 'trail') left behind by another electron as it moves through the lattice, given that electrons normally repel each other due to Coulomb repulsion?"](answer.md)
