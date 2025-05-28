@@ -53,8 +53,7 @@ Opposite spins (a spin-singlet) ensure the overall wavefunction respects Fermi�
 ### 3.1 The “Wake‐Trail” Metaphor
 
 **Cartoon**: Electron 1 races past heavy ions, attracting them slightly and leaving a positive “wake” behind. Electron 2 feels this lingering positive region and is drawn in.
-
-**Utility**: Conveys the retardation—ions move much more slowly than electrons, so the lattice distortion persists long enough to mediate attraction.
+Conveys the retardation ions move much more slowly than electrons, so the lattice distortion persists long enough to mediate attraction.
 
 ### 3.2 Why the Cartoon Misleads on Momentum
 
@@ -93,7 +92,7 @@ $$
 \Delta(0) \approx 2\hbar \omega_D \, e^{-1/[N(0)\lvert V \rvert]}.
 $$
 
-**Key takeaway**: Phonons carry momentum, enforce $k \rightarrow -k$ scattering, and produce a net attractive potential only at low frequencies [3].
+Phonons carry momentum, enforce $k \rightarrow -k$ scattering, and produce a net attractive potential only at low frequencies [3].
 
 ## 5. Summary
 
