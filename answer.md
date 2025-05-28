@@ -64,7 +64,7 @@ The naive picture might suggest Electron 2 simply “falls into the same $k$-sta
 - Electron 1 emits a virtual phonon of momentum $q$, going from $k \rightarrow k - q$.
 - Electron 2 absorbs that phonon, $k' \rightarrow k' + q$.
 
-The most attractive channel occurs when $k' = -k$ (so $k' + q = k$), giving the paired states $(k, -k)$—and total $K=0$.
+The most attractive channel occurs when $k' = -k$ (so $k' + q = k$), giving the paired states $(k, -k)$ and total $K=0$.
 
 **Energy cost**
 
