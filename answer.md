@@ -72,29 +72,7 @@ A pair in $(k, k)$ would have $K=2k$, forcing at least one electron off the Ferm
 
 Pairing as $(k, -k)$ lets both remain at $E_F$, maximizing binding.
 
-## 4. Formal Phonon Exchange and Effective Interaction
-
-In many‐body language, integrating out phonons yields a frequency‐ and momentum‐dependent effective interaction:
-
-$$
-V_{\text{eff}}(q, \omega) = \frac{\lvert g_q \rvert^2}{\omega^2 - \Omega_q^2},
-$$
-
-where
-
-- $\Omega_q$ is the phonon dispersion,
-- $g_q$ the electron–phonon coupling,
-- $\omega$ the energy transfer.
-
-For $\lvert \omega \rvert < \Omega_q$, the denominator is negative, so $V_{\text{eff}} < 0$: an attraction. BCS further simplifies this to a constant $-\lvert V \rvert$ within $\pm \hbar \omega_D$ of $E_F$, yielding the celebrated gap
-
-$$
-\Delta(0) \approx 2\hbar \omega_D \, e^{-1/[N(0)\lvert V \rvert]}.
-$$
-
-Phonons carry momentum, enforce $k \rightarrow -k$ scattering, and produce a net attractive potential only at low frequencies [3].
-
-## 5. Summary
+## 4. Summary
 
 - Opposite momentum $(k, -k)$ → no kinetic‐energy penalty, maximal phase space.
 - Opposite spin (singlet) → antisymmetry of the fermionic wavefunction.
