@@ -62,4 +62,4 @@ Detailed mathematical descriptions and applications of condensed matter physics 
 4. [Why the superconducting wavefunction becomes increasingly rigid near the critical temperature?](superconducting_coherence.md)
 5. [Why Unpaired Electrons Are Not Enough to become magnetic?](unpaired.md)
 6. [In the formation of a Cooper pair, why is it necessary for the two electrons to have opposite momenta and opposite spins? Also, during lattice-mediated attraction, how does an electron become attracted to the positive potential (or 'trail') left behind by another electron as it moves through the lattice, given that electrons normally repel each other due to Coulomb repulsion?"](answer.md)
-7. [Heat-Assisted Magnetic Recording (HAMR) verus Microwave-Assisted Magnetic Recording (MAMR), who win and why?](EAHD.md)
+7. [Heat-Assisted Magnetic Recording (HAMR) versus Microwave-Assisted Magnetic Recording (MAMR), who win and why?](EAHD.md)
